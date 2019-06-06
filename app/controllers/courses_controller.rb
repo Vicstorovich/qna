@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :find_course, only: %i[destroy update edit]
 
   def index
-    @courses = Course.all
+    @courses = Course.all.page(params[:page]).per(3)
   end
 
   def new
@@ -41,6 +41,6 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:name)
+    params.require(:course).permit(:name, :image)
   end
 end

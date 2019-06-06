@@ -1,5 +1,9 @@
+= link_to "New course",  new_course_path
+
 %h1 Courses
 .courses
   = render @courses
 
-= link_to "New course",  new_course_path
+%br/
+%br/
+= paginate @courses
