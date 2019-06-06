@@ -24,6 +24,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
 # Gems set in hand
 gem 'hamlit-rails'
 gem 'simple_form'
