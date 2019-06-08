@@ -1,4 +1,6 @@
-= simple_form_for resource, html: {novalidate: true} do |f|
-  = f.input :name
-  = f.input :image
-  = f.submit 'Save'
+.form-group
+
+  = simple_form_for resource, html: {novalidate: true} do |f|
+    = f.input :name, class: 'col-sm-2 control-label'
+    = f.input :image
+    = f.submit 'Save'

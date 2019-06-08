@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :find_course, only: %i[destroy update edit]
 
   def index
-    @courses = Course.all.page(params[:page]).per(3)
+    @courses = per_page(Course, 3)
   end
 
   def new
@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+
     if @course.save
       redirect_to root_path
     else
