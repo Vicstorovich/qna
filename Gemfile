@@ -19,13 +19,18 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
 # Gems set in hand
 gem 'hamlit-rails'
+gem 'simple_form'
+gem 'kaminari'
+gem 'carrierwave'
+gem 'mini_magick', '~> 4.8'
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
