@@ -36,6 +36,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~>3.8'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -53,6 +54,7 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
   gem "rack-livereload"
   gem 'rubocop-rspec', require: false
+  gem 'rails_real_favicon'
 end
 
 group :test do
@@ -63,3 +65,4 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'rubycritic', require: false
