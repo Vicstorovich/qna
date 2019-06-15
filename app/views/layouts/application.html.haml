@@ -10,14 +10,25 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %nav.navbar.navbar-inverse.menu
+      %ul.nav.nav-tabs
+        - if user_signed_in?
+          %li.active{:role => "presentation"}
+            %a{:href => "#"}= link_to "Log out", sessions_path, method: :delete
+            %br/
+          %li{:role => "presentation"}
+            %a{:href => "#"}= link_to "Home", courses_path
+        - else
+          %li{:role => "presentation"}
+            %a{:href => "#"}= link_to "Log in", new_sessions_path
+            %br/
+          %li{:role => "presentation"}
+            %a{:href => "#"}= link_to "Registration", new_registrations_path
 
-
-    %nav.navbar.navbar-inverse
-      %h3 Навигация
     #main-container.container-fluid
       .container
         .row
-          .col-3
+          .col-3.sidebar
             %h3 Сайдбар
-          .col-9
+          .col-9.content
             = yield

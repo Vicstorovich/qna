@@ -1,5 +1,4 @@
 class CoursesController < ApplicationController
-  before_action :find_course, only: %i[destroy update edit]
 
   def index
     @courses = per_page(Course, 3)
@@ -13,7 +12,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 
     if @course.save
-      redirect_to root_path
+      redirect_to courses_path
     else
       render :new
     end
@@ -22,24 +21,25 @@ class CoursesController < ApplicationController
   def edit; end
 
   def update
-    if @course.update course_params
-      redirect_to root_path
+    if course.update course_params
+      redirect_to courses_path
     else
       render :edit
     end
   end
 
   def destroy
-    @course.destroy
+    course.destroy
 
-    redirect_to root_path
+    redirect_to courses_path
   end
 
   private
 
-  def find_course
-    @course = Course.find(params[:id])
+  def course
+    @course ||= Course.find(params[:id])
   end
+  helper_method :course
 
   def course_params
     params.require(:course).permit(:name, :image)

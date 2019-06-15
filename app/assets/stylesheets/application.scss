@@ -12,3 +12,19 @@
  *
  */
  @import "bootstrap";
+
+.menu {
+    border: 4px double black; /* Параметры границы */
+    background: #034769; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+   }
+.sidebar {
+    border: 4px double black; /* Параметры границы */
+    background: #8D8D8D; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+   }
+.content {
+    border: 4px double black; /* Параметры границы */
+    background: #A7A7A7; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+   }

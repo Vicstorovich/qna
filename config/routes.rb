@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'courses#index'
-  resources :courses, except: %i[index]
+  root to: 'appointment#index'
+
+  resources :courses
+
+  resource :registrations, only: %i[new create]
+
+  resource :sessions, only: %i[new create destroy]
 end
