@@ -1,8 +1,8 @@
 require "digest/md5"
 
 class User < ApplicationRecord
-  SALT = "my_super_cache"
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  SALT = "my_super_cache".freeze
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
