@@ -11,6 +11,7 @@ class RegistrationsController < ApplicationController
 
       redirect_to courses_path
     else
+      flash[:notice] = "You are already registered!"
       render :new
     end
   end
