@@ -32,6 +32,7 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'redis-rails'
+gem 'email_validator'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

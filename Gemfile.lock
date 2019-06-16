@@ -100,6 +100,8 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    email_validator (2.0.1)
+      activemodel
     equalizer (0.0.11)
     erubi (1.8.0)
     erubis (2.7.0)
@@ -430,6 +432,7 @@ DEPENDENCIES
   carrierwave
   chromedriver-helper
   coffee-rails (~> 4.2)
+  email_validator
   factory_bot_rails
   fuubar
   guard-bundler
