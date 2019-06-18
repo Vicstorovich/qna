@@ -20,10 +20,10 @@
             %a{:href => "#"}= link_to "Home", courses_path
         - else
           %li{:role => "presentation"}
-            %a{:href => "#"}= link_to "Log in", new_sessions_path
+            %a{:href => "#"}= link_to "Log in", login_path
             %br/
           %li{:role => "presentation"}
-            %a{:href => "#"}= link_to "Registration", new_registrations_path
+            %a{:href => "#"}= link_to "Registration", signup_path
 
     #main-container.container-fluid
       .container

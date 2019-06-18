@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = per_page(Course, 3)
+    @courses = per_page(Course, 1)
   end
 
   def new

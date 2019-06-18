@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   resources :courses
 
-  resource :registrations, only: %i[new create]
+  get :signup, to: "registrations#new"
+  get :login, to: "sessions#new"
 
-  resource :sessions, only: %i[new create destroy]
+  resource :registrations, only: %i[create]
+
+  resource :sessions, only: %i[create destroy]
 end
