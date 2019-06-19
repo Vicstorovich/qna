@@ -37,7 +37,6 @@ gem 'email_validator'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
-  gem 'rspec-rails', '~>3.8'
   gem 'pry-rails'
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 end

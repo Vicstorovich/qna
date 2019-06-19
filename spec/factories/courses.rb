@@ -6,6 +6,8 @@ FactoryBot.define do
   factory :course do
     name
 
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/support/assets/my_file.jpg')))}
+
     trait :invalid do
       name { nil }
     end
