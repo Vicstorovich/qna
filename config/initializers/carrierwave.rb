@@ -18,10 +18,6 @@ if Rails.env.test? || Rails.env.cucumber?
       def store_dir
         "#{Rails.root}/spec/support/assets/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
       end
-
-      # def default_url(*args)
-      #   ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png" ].compact.join('_'))
-      # end
     end
   end
 end

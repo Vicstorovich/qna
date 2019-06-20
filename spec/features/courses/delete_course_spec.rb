@@ -9,7 +9,6 @@ feature "User can delete course", %q{
     sign_in(user)
 
     expect(page).to have_content course.name
-
     click_on "Delete"
 
     expect(page).to have_content "Course was successfully deleted"

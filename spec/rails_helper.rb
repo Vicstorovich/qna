@@ -90,6 +90,8 @@ RSpec.configure do |config|
   config.after(:each) do
     if Rails.env.test? || Rails.env.cucumber?
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/assets/tmp"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/assets/course/image"])
     end
   end
 end

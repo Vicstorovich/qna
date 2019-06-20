@@ -4,7 +4,6 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email)}
 
-
   describe "#valid_password?" do
     it "should return true" do
       expect(subject.valid_password?("1234567")).to eq true

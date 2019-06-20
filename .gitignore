@@ -28,3 +28,4 @@
 /config/database.yml
 /Guardfile
 /public/system/*
+/node_modules

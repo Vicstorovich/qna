@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = per_page(Course, 1)
+    @courses = per_page(Course, 2)
   end
 
   def new
@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
 
   def update
     if course.update course_params
-      flash[:notice] =  "The course was updated successfully."
+      flash[:notice] = "The course was updated successfully."
       redirect_to courses_path
     else
       render :edit

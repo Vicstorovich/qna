@@ -18,6 +18,7 @@ RSpec.describe RegistrationsController, type: :controller do
       it "redirects to show view" do
         action
         expect(response).to redirect_to courses_path
+        expect(response).to_not render_template :new
       end
     end
 
@@ -31,6 +32,7 @@ RSpec.describe RegistrationsController, type: :controller do
       it "redirects to show view" do
         action
         expect(response).to render_template :new
+        expect(response).to_not redirect_to courses_path
       end
     end
   end
