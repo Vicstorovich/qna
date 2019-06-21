@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = per_page(Course, 3)
+    @courses = Course.page(params[:page]).per(2)
   end
 
   def new
@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 
     if @course.save
+      flash[:notice] = "Your course successfully created."
       redirect_to courses_path
     else
       render :new
@@ -21,6 +22,7 @@ class CoursesController < ApplicationController
 
   def update
     if course.update course_params
+      flash[:notice] = "The course was updated successfully."
       redirect_to courses_path
     else
       render :edit
@@ -30,6 +32,7 @@ class CoursesController < ApplicationController
   def destroy
     course.destroy
 
+    flash[:notice] = "Course was successfully deleted"
     redirect_to courses_path
   end
 

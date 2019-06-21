@@ -37,8 +37,8 @@ gem 'email_validator'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
-  gem 'rspec-rails', '~>3.8'
   gem 'pry-rails'
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 end
 
 group :development do
@@ -64,6 +64,10 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'fuubar'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'rspec-rails', '~>3.8'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

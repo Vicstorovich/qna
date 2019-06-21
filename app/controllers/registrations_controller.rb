@@ -5,10 +5,10 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       sign_in @user
 
+      flash[:notice] = "Signed in successfully."
       redirect_to courses_path
     else
       flash[:notice] = "You are already registered!"
