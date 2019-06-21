@@ -1,6 +1,8 @@
+require "rails_helper"
+
 feature "Logged in user can sign out", %q{
   In order to finish work
-  logged in user can sign out
+  Logged in user can sign out
 } do
   let!(:user) { create :user, email: "valid@test.com", password: "valid_password" }
 

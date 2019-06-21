@@ -1,3 +1,5 @@
+require "rails_helper"
+
 RSpec.describe SessionsController, type: :controller do
   describe "POST #create" do
     let!(:user) { create :user, email: "valid@test.com", password: "valid_password" }
@@ -8,7 +10,6 @@ RSpec.describe SessionsController, type: :controller do
       it "should login and redirect to home page" do
         expect(session[:user_id]).to eq user.id
         expect(response).to redirect_to courses_path
-        expect(response).to_not render_template :new
       end
     end
 
@@ -17,7 +18,6 @@ RSpec.describe SessionsController, type: :controller do
 
       it "should not login and render sign it form" do
         expect(session[:user_id]).to eq nil
-        expect(response).to_not redirect_to courses_path
         expect(response).to render_template :new
       end
     end
@@ -27,7 +27,6 @@ RSpec.describe SessionsController, type: :controller do
 
       it "should not login and render sign it form" do
         expect(session[:user_id]).to_not eq user.id
-        expect(response).to_not redirect_to courses_path
         expect(response).to render_template :new
       end
     end
