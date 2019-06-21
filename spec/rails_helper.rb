@@ -31,7 +31,6 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  config.include FactoryBot::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FeaturesHelper, type: :feature
@@ -67,43 +66,20 @@ RSpec.configure do |config|
   # config database_cleaner
   config.use_transactional_fixtures = false
 
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each, js: true) do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-
   config.after(:each) do
     if Rails.env.test? || Rails.env.cucumber?
       FileUtils.rm_rf("#{Rails.root}/tmp/storage")
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp"])
 <<<<<<< HEAD
+<<<<<<< HEAD
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/tmp"])
 =======
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/assets/tmp"])
+=======
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/tmp"])
+>>>>>>> 589507f2641b5fe7a088728c26c1b35c33141e22
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/assets/course/image"])
 >>>>>>> parent of a411f84... speed testing 4s.
     end
-  end
-end
-
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
   end
 end
