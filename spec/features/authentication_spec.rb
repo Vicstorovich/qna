@@ -1,3 +1,5 @@
+require "rails_helper"
+
 feature "User can sign in", %q{
   As an unauthenticated user
   I'd like to be able to sign in

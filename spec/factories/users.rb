@@ -4,15 +4,7 @@ FactoryBot.define do
   end
 
   factory :user do
-    email
+    email { generate(:email) }
     password { "12345678" }
-
-    trait :invalid_email do
-      email { nil }
-    end
-
-    trait :invalid_password do
-      password { nil }
-    end
   end
 end

@@ -1,3 +1,5 @@
+require "rails_helper"
+
 RSpec.describe RegistrationsController, type: :controller do
   describe "GET #new" do
     before { get :new }
@@ -18,12 +20,11 @@ RSpec.describe RegistrationsController, type: :controller do
       it "redirects to show view" do
         action
         expect(response).to redirect_to courses_path
-        expect(response).to_not render_template :new
       end
     end
 
     context "with invalid attributes" do
-      let(:action) { post :create, params: { user: attributes_for(:user, :invalid_email) } }
+      let(:action) { post :create, params: { user: attributes_for(:user, email: nil) } }
 
       it "saves a new question in the database" do
         expect { action }.to change(User, :count).by(0)
@@ -32,7 +33,6 @@ RSpec.describe RegistrationsController, type: :controller do
       it "redirects to show view" do
         action
         expect(response).to render_template :new
-        expect(response).to_not redirect_to courses_path
       end
     end
   end

@@ -4,12 +4,8 @@ FactoryBot.define do
   end
 
   factory :course do
-    name
+    name { generate(:name) }
 
-    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/support/assets/my_file.jpg')))}
-
-    trait :invalid do
-      name { nil }
-    end
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/images/my_file.jpg')))}
   end
 end
