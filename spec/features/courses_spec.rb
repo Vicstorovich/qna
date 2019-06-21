@@ -29,7 +29,7 @@ feature "The user can manipulate rates", %q{
 
     scenario "create a course with attached file" do
       fill_in "course_name", with: "New course"
-      attach_file "course_image", "#{Rails.root}/spec/fixtures/images/my_file.jpg"
+      attach_file "course_image", "#{Rails.root}/spec/support/assets/my_file.jpg"
       click_on "Save"
 
       expect(page.find("img")["src"]).to have_content "my_file.jpg"
@@ -65,7 +65,7 @@ feature "The user can manipulate rates", %q{
 
     scenario "edits a course with attached file" do
       fill_in "course_name", with: "New course"
-      attach_file "course_image", "#{Rails.root}/spec/fixtures/images/my_file.jpg"
+      attach_file "course_image", "#{Rails.root}/spec/support/assets/my_file.jpg"
       click_on "Save"
 
       expect(page).to have_content "The course was updated successfully."
