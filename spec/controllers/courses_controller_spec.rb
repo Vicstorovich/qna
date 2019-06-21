@@ -4,18 +4,14 @@ RSpec.describe CoursesController, type: :controller do
   let(:course) { create :course, name: "MyCourse" }
 
   describe "GET #index" do
-    # let(:courses) { create_list(:course, 2) }
-    # before { get :index }
+    let(:courses) { create_list(:course, 2) }
+    before { get :index }
 
-    # it "fills the array of courses according to pagination" do
-    #   expect(assigns(:courses).page.per(1)).to_not match_array(courses)
-    #   expect(assigns(:courses).page.per(2)).to match_array(courses)
-    #   expect(assigns(:courses).page.per(3)).to match_array(courses)
-    # end
+    it "fills the array of courses according to pagination" do
+      expect(assigns(:courses)).to match_array(courses)
 
-    # it "renders index view" do
-    #   expect(response).to render_template :index
-    # end
+      expect(response).to render_template :index
+    end
   end
 
   describe "GET #new" do
@@ -32,9 +28,7 @@ RSpec.describe CoursesController, type: :controller do
 
       it "saves a new course in the database" do
         expect { action }.to change(Course, :count).by(1)
-      end
 
-      it "redirects to show view" do
         action
         expect(response).to redirect_to courses_path
       end
@@ -92,9 +86,6 @@ RSpec.describe CoursesController, type: :controller do
         course.reload
 
         expect(course.name).to eq "MyCourse"
-      end
-
-      it "re-renders edit view" do
         expect(response).to render_template :edit
       end
     end
