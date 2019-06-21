@@ -70,16 +70,9 @@ RSpec.configure do |config|
     if Rails.env.test? || Rails.env.cucumber?
       FileUtils.rm_rf("#{Rails.root}/tmp/storage")
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp"])
-<<<<<<< HEAD
-<<<<<<< HEAD
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/tmp"])
-=======
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/assets/tmp"])
-=======
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/tmp"])
->>>>>>> 589507f2641b5fe7a088728c26c1b35c33141e22
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/assets/course/image"])
->>>>>>> parent of a411f84... speed testing 4s.
     end
   end
 end
