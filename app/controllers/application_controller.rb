@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :user_signed_in?
 
+  def authenticate_user!
+    unless user_signed_in?
+      redirect_to root_path
+    end
+  end
+
   # def per_page(resource, num)
   #   resource.all.page(params[:page]).per(num)
   # end

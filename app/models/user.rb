@@ -3,6 +3,8 @@ require "digest/md5"
 class User < ApplicationRecord
   SALT = "my_super_cache".freeze
 
+  has_many :courses
+
   validates :email, presence: true, uniqueness: true, email: true
 
   def email=(e)

@@ -39,6 +39,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
@@ -55,7 +56,6 @@ group :development do
   gem 'guard-spring', require: false
   gem 'guard-livereload', '~> 2.5', require: false
   gem "rack-livereload"
-  gem 'rubocop-rspec', require: false
   gem 'rails_real_favicon'
 end
 

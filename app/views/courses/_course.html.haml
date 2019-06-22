@@ -3,5 +3,3 @@
     %li{class: "image"}
       = image_tag course.image.thumb.url
       = course.name
-    = link_to "Edit", edit_course_path(course)
-    = link_to "Delete", course_path(course), method: :delete, data: { confirm: "Are you sure?" }
