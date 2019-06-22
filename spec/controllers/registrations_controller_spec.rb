@@ -19,7 +19,7 @@ RSpec.describe RegistrationsController, type: :controller do
 
       it "redirects to show view" do
         action
-        expect(response).to redirect_to courses_path
+        expect(response).to redirect_to dashboard_courses_path
       end
     end
 

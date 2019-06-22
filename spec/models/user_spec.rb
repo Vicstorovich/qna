@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   subject { build :user, password: "1234567" }
 
+  it { should have_many(:courses) }
   it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email)}
 

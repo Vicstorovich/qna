@@ -6,6 +6,7 @@ feature "The user can manipulate rates", %q{
   As an authenticated user can delete courses
 } do
   given!(:user) { create(:user) }
+  given!(:other_user) { create(:user) }
 
   describe "Authenticated user" do
     background do
@@ -39,7 +40,7 @@ feature "The user can manipulate rates", %q{
   end
 
   describe "Authenticated user" do
-    given!(:course) { create :course, name: "First course" }
+    given!(:course) { create :course, name: "First course", user: user }
 
     background do
       sign_in(user)
@@ -76,7 +77,7 @@ feature "The user can manipulate rates", %q{
   end
 
   describe "Authenticated user" do
-    given!(:course) { create :course }
+    given!(:course) { create :course, user: user }
 
     scenario "can delete his question" do
       sign_in(user)
@@ -84,8 +85,29 @@ feature "The user can manipulate rates", %q{
       click_on "Delete"
 
       expect(page).to have_content "Course was successfully deleted"
-      expect(current_path).to eq courses_path
+      expect(current_path).to eq dashboard_courses_path
       expect(page).to have_no_content course.name
+    end
+  end
+
+  describe "Authenticated other user" do
+    given!(:course) { create :course, user: user }
+    given!(:other_course) { create :course, user: other_user }
+
+    scenario "can't edit and delete not your course" do
+      sign_in(other_user)
+
+      expect(page).to have_no_content course.name
+    end
+
+    scenario "can only view all courses" do
+      sign_in(other_user)
+      click_on "All courses"
+
+      expect(page).to have_content course.name
+      expect(page).to have_content other_course.name
+      expect(page).to have_no_link 'Edit'
+      expect(page).to have_no_link 'Delete'
     end
   end
 end

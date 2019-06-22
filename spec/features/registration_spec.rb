@@ -13,7 +13,7 @@ feature "Logged in user can sign out", %q{
     fill_in "user_password", with: "another_valid_password"
     click_on "Regstration"
 
-    expect(current_path).to eq courses_path
+    expect(current_path).to eq dashboard_courses_path
     expect(page).to have_content "Signed in successfully."
     click_on "Log out"
 
