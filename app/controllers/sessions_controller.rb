@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       sign_in user
 
       flash[:notice] = "Signed in successfully."
-      redirect_to courses_path
+      redirect_to dashboard_courses_path
     else
       flash[:notice] = "Invalid Email or password."
       render :new

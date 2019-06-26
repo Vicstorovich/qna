@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root to: 'appointment#index'
 
-  resources :courses
+  resources :courses, only: %i[index]
+
+  namespace :dashboard do
+    resources :courses
+  end
 
   get :signup, to: "registrations#new"
   get :login, to: "sessions#new"

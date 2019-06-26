@@ -9,7 +9,7 @@ RSpec.describe SessionsController, type: :controller do
 
       it "should login and redirect to home page" do
         expect(session[:user_id]).to eq user.id
-        expect(response).to redirect_to courses_path
+        expect(response).to redirect_to dashboard_courses_path
       end
     end
 
