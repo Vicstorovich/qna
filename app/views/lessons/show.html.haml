@@ -1,0 +1,8 @@
+= link_to "Back",  dashboard_course_lessons_path, class: 'btn btn-success'
+
+%h1= @lesson.title
+%p= @lesson.description
+%p= @lesson.conspectus
+%p= image_tag @lesson.image.thumb.url
+%p= @lesson.homework
+%p= video_tag @lesson.video_url.to_s, :controls =>true

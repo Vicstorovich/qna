@@ -1,0 +1,8 @@
+= link_to "New lesson",  new_dashboard_course_lesson_path(course)
+%h1 Lessons
+.lessons
+  = render @lessons
+
+%br/
+%br/
+= paginate @lessons
