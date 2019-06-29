@@ -1,0 +1,14 @@
+.form-group
+
+  = simple_form_for [:dashboard, course, lesson], html: {novalidate: true} do |f|
+    %p
+      To draft
+      = f.check_box :draft
+    = f.input :title
+    = f.input :description
+    = f.input :conspectus
+    = f.input :homework
+    = f.input :image
+    = f.input :video
+
+    = f.submit 'Save'
