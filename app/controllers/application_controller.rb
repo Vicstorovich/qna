@@ -23,7 +23,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def per_page(resource, num)
-  #   resource.all.page(params[:page]).per(num)
-  # end
+  private
+
+  def course
+    @course ||= Course.find(params[:course_id])
+  end
+  helper_method :course
 end

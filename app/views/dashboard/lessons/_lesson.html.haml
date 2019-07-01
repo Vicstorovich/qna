@@ -1,6 +1,9 @@
 %div{class: "lesson-#{lesson.id}"}
   %ul
     %li
+      %p
+        The lesson selector
+        = lesson.selector
       = link_to lesson.title, dashboard_course_lesson_path(course, lesson)
       - if lesson.draft
         %p
