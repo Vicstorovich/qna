@@ -38,11 +38,6 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   private
 
-  def course
-    @course ||= current_user.courses.find(params[:id])
-  end
-  helper_method :course
-
   def course_params
     params.require(:course).permit(:name, :image)
   end

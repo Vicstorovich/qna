@@ -1,0 +1,5 @@
+%div{class: "homework-#{homework.id}"}
+  %ul
+    %li
+      = link_to homework.body
+    = link_to "Delete", dashboard_course_homework_path(course, homework), method: :delete, data: { confirm: "Are you sure?" }

@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem 'rubocop-rspec', require: false
+  gem 'seed_dump'
 end
 
 group :development do
