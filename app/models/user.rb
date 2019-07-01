@@ -3,9 +3,18 @@ require "digest/md5"
 class User < ApplicationRecord
   SALT = "my_super_cache".freeze
 
+  attr_reader :password
+
+  has_one :profile
   has_many :courses
 
   validates :email, presence: true, uniqueness: true, email: true
+  validates :password, confirmation: true
+  validates :password, presence: true, unless: -> { encrypted_password.present? }
+
+  accepts_nested_attributes_for :profile, update_only: true
+
+  before_create :build_profile, unless: -> { profile.present? }
 
   def email=(e)
     e = e.strip if e
@@ -14,6 +23,7 @@ class User < ApplicationRecord
 
   def password=(value)
     self.encrypted_password = password_hash(value)
+    @password = value
   end
 
   def valid_password?(value)

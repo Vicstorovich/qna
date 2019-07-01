@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
+    resource :profiles, only: %i[edit update]
     resources :courses do
       resources :lessons
-      resources :homeworks, only: %i[index show destroy]
+      resources :homeworks, only: %i[index destroy]
     end
   end
 

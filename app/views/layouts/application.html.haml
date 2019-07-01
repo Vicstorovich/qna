@@ -14,6 +14,9 @@
       %ul.nav.nav-tabs
         - if user_signed_in?
           %li.active{:role => "presentation"}
+            %a{:href => "#"}= link_to "Edit profile", edit_dashboard_profiles_path
+            %br/
+          %li.active{:role => "presentation"}
             %a{:href => "#"}= link_to "Log out", sessions_path, method: :delete
             %br/
           %li{:role => "presentation"}
