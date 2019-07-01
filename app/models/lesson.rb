@@ -1,6 +1,6 @@
 class Lesson < ApplicationRecord
-  scope :draft, -> { where(draft: false) }
-  scope :sort_lessons, -> { order(selector: :asc) }
+  scope :not_draft, -> { where(draft: false) }
+  scope :sort_lessons, -> { order(priority: :asc) }
 
   belongs_to :course
   has_many :homeworks, dependent: :destroy

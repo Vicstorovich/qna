@@ -43,13 +43,18 @@ class Dashboard::LessonsController < Dashboard::BaseController
 
   private
 
+  def course
+    @course ||= Course.find(params[:course_id])
+  end
+  helper_method :course
+
   def lesson
     @lesson ||= course.lessons.find(params[:id])
   end
   helper_method :lesson
 
   def lesson_params
-    params.require(:lesson).permit(:title, :description, :conspectus, :homework,
-                   :image, :video, :draft, :selector)
+    params.require(:lesson).permit(:title, :description, :conspectus, :tell_homework,
+     :image, :video, :draft, :priority)
   end
 end
