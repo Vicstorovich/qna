@@ -5,8 +5,9 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
   has_many :courses
+  has_many :homeworks
 
   validates :email, presence: true, uniqueness: true, email: true
   validates :password, confirmation: true
@@ -16,8 +17,8 @@ class User < ApplicationRecord
 
   before_create :build_profile, unless: -> { profile.present? }
 
-  def email=(e)
-    e = e.strip if e
+  def email=(value)
+    value = value.strip if value
     super
   end
 

@@ -22,11 +22,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-
-  private
-
-  def course
-    @course ||= Course.find(params[:course_id])
-  end
-  helper_method :course
 end
