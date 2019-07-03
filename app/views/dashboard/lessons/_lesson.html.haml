@@ -1,12 +1,12 @@
-%div{class: "lesson-#{lesson.id}"}
-  %ul
-    %li
+%ul
+  %li
+    %p
+      The lesson display priority
+      = lesson.priority
+    - if lesson.draft?
       %p
-        The lesson selector
-        = lesson.selector
-      = link_to lesson.title, dashboard_course_lesson_path(course, lesson)
-      - if lesson.draft
-        %p
-          The lesson is in drafts
-    = link_to "Edit", edit_dashboard_course_lesson_path(course, lesson)
-    = link_to "Delete", dashboard_course_lesson_path(course, lesson), method: :delete, data: { confirm: "Are you sure?" }
+        The lesson is in drafts
+    = link_to lesson.title, dashboard_course_lesson_path(course, lesson)
+
+  = link_to "Edit", edit_dashboard_course_lesson_path(course, lesson)
+  = link_to "Delete", dashboard_course_lesson_path(course, lesson), method: :delete, data: { confirm: "Are you sure?" }

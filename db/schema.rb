@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_175308) do
+ActiveRecord::Schema.define(version: 2019_07_02_112146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,20 +28,24 @@ ActiveRecord::Schema.define(version: 2019_07_01_175308) do
     t.integer "lesson_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_homeworks_on_course_id"
+    t.index ["user_id"], name: "index_homeworks_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
     t.text "conspectus"
-    t.text "homework"
+    t.text "tell_homework"
     t.string "image"
     t.string "video"
     t.integer "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "draft", default: false, null: false
-    t.integer "selector", default: 0, null: false
+    t.integer "priority", default: 0, null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -70,4 +74,6 @@ ActiveRecord::Schema.define(version: 2019_07_01_175308) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "homeworks", "courses"
+  add_foreign_key "homeworks", "users"
 end

@@ -4,12 +4,11 @@
 %p= @lesson.description
 %p= @lesson.conspectus
 %p= image_tag @lesson.image.thumb.url
-%p= @lesson.homework
+%p= @lesson.tell_homework
 %p= video_tag @lesson.video_url.to_s, :controls =>true
 
 %h3 Send your homework
-- if @lesson.homeworks.last.present?
-  = @lesson.homeworks.last.body
+= view_homework_user_this_lesson(@lesson)
 
 = simple_form_for [@lesson, @lesson.homeworks.new], url: course_lesson_homeworks_path(course, @lesson), html: {method: :post} do |f|
   = f.input :body

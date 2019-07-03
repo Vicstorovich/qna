@@ -1,18 +1,14 @@
 class Dashboard::HomeworksController < Dashboard::BaseController
   def index
-    @lessons = Lesson.all
+    @lessons = course.lessons.all
 
-    unless params[:lesson].nil? || params[:lesson][:lesson_id] == ""
-      @homeworks = Homework.select_lessons(params[:lesson][:lesson_id]).
-                    page(params[:page]).per(2)
+    if params[:lesson_id].present? || params.has_value?('0')
+      @homeworks = course.homeworks.select_lessons(params[:lesson_id]).
+      page(params[:page]).per(2)
+      @lesson_title = @lessons.find(params[:lesson_id]).title
     else
-      @homeworks = Homework.all.page(params[:page]).per(2)
-    end
-
-    unless params[:lesson].nil? || params[:lesson][:lesson_id] == ""
-      @lesson_title = Lesson.find_by(id: params[:lesson][:lesson_id]).title
-      else
-       @lesson_title = "all"
+      @homeworks = course.homeworks.all.page(params[:page]).per(5)
+      @lesson_title = "all"
     end
   end
 
@@ -25,8 +21,13 @@ class Dashboard::HomeworksController < Dashboard::BaseController
 
   private
 
+  def course
+    @course ||= Course.find(params[:course_id])
+  end
+  helper_method :course
+
   def homework
-    @homework ||= Homework.find(params[:id])
+    @homework ||= course.homeworks.find(params[:id])
   end
   helper_method :homework
 

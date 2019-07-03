@@ -1,10 +1,8 @@
 class HomeworksController < ApplicationController
-  def new
-    @homework = lesson.homeworks.build
-  end
-
   def create
     @homework = lesson.homeworks.build
+    @homework.user_id = current_user.id
+    @homework.course_id = course.id
     @homework.assign_attributes(homework_params)
 
     flash[:notice] = "Your homework successfully created." if @homework.save
@@ -13,8 +11,13 @@ class HomeworksController < ApplicationController
 
   private
 
+  def course
+    @course ||= Course.find(params[:course_id])
+  end
+  helper_method :course
+
   def lesson
-    @lesson ||= Lesson.find(params[:lesson_id])
+    @lesson ||= course.lessons.find(params[:lesson_id])
   end
   helper_method :lesson
 
