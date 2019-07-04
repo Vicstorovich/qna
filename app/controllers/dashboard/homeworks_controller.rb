@@ -3,10 +3,10 @@ class Dashboard::HomeworksController < Dashboard::BaseController
     @lessons = course.lessons.all
 
     if params[:lesson_id].present? || params.has_value?('0')
-      @homeworks = Homework.by_lesson_homeworks(course, params[:lesson_id])
+      @homeworks = course.homeworks.select_lesson(params[:lesson_id])
       @lesson_title = @lessons.find(params[:lesson_id]).title
     else
-      @homeworks = Homework.course_homeworks(course)
+      @homeworks = course.homeworks
       @lesson_title = "all"
     end
 
@@ -28,7 +28,7 @@ class Dashboard::HomeworksController < Dashboard::BaseController
   helper_method :course
 
   def homework
-    @homework ||= Homework.course_homeworks(course).find(params[:id])
+    @homework ||= course.homeworks.find(params[:id])
   end
   helper_method :homework
 
