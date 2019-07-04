@@ -1,2 +1,4 @@
 %ul
-  = define_an_even_odd_lesson(course, lesson)
+  %li{:class => "#{cycle('lesson-odd', 'lesson-even')}"}
+    %p
+      = link_to lesson.title, course_lesson_path(course,lesson)

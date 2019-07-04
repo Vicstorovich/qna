@@ -2,7 +2,6 @@ class HomeworksController < ApplicationController
   def create
     @homework = lesson.homeworks.build
     @homework.user_id = current_user.id
-    @homework.course_id = course.id
     @homework.assign_attributes(homework_params)
 
     flash[:notice] = "Your homework successfully created." if @homework.save
