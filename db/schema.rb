@@ -10,13 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_07_03_193921) do
-||||||| merged common ancestors
-ActiveRecord::Schema.define(version: 2019_07_01_175308) do
-=======
+
 ActiveRecord::Schema.define(version: 2019_07_02_112146) do
->>>>>>> cba91839618d333058e476b8b4a2f3e62f0692b9
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
