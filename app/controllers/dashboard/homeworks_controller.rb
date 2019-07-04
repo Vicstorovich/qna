@@ -28,7 +28,7 @@ class Dashboard::HomeworksController < Dashboard::BaseController
   helper_method :course
 
   def homework
-    @homework ||= course.homeworks.find(params[:id])
+    @homework ||= Homework.course_homeworks(course).find(params[:id])
   end
   helper_method :homework
 
