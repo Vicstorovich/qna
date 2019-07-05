@@ -39,7 +39,7 @@ class Dashboard::CoursesController < Dashboard::BaseController
   private
 
   def course
-    @course ||= Course.find(params[:id])
+    @course ||= current_user.courses.find(params[:id])
   end
   helper_method :course
 
