@@ -1,0 +1,14 @@
+= link_to "Back",  dashboard_course_lessons_path(course), class: 'btn btn-success'
+
+%h3 Select lesson
+= form_with  url: dashboard_course_homeworks_path(course.id), method: 'get', local: true do |f|
+  = f.select :lesson_id, options_for_select(@lessons.collect { |lesson| [lesson.title.titleize, lesson.id] }), { :include_blank => true }
+  = f.submit "Select"
+
+%h4
+  Homeworks #{@lesson_title}
+.lessons
+  = render @homeworks
+%br/
+%br/
+= paginate @homeworks

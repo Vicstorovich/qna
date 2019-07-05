@@ -28,3 +28,19 @@
     background: #A7A7A7; /* Цвет фона */
     padding: 10px; /* Поля вокруг текста */
    }
+video {
+    width: 50%;
+    height: 50%;
+   }
+.lesson-odd {
+    width: 50%;
+    height: 100%;
+    border: 2px solid green;
+    background: #f8b0f8;
+   }
+.lesson-even {
+    background: #e0f8f8;
+    width: 50%;
+    height: 100%;
+    border: 2px solid red;
+   }

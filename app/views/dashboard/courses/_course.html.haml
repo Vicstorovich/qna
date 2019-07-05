@@ -2,6 +2,6 @@
   %ul
     %li{class: "image"}
       = image_tag course.image.thumb.url
-      = course.name
+      = link_to course.name, dashboard_course_lessons_path(course)
     = link_to "Edit", edit_dashboard_course_path(course)
     = link_to "Delete", dashboard_course_path(course), method: :delete, data: { confirm: "Are you sure?" }

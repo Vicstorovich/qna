@@ -22,8 +22,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-
-  # def per_page(resource, num)
-  #   resource.all.page(params[:page]).per(num)
-  # end
 end

@@ -2,4 +2,4 @@
   %ul
     %li{class: "image"}
       = image_tag course.image.thumb.url
-      = course.name
+      = link_to course.name, course_lessons_path(course)

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_22_082314) do
+
+ActiveRecord::Schema.define(version: 2019_07_02_112146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +22,37 @@ ActiveRecord::Schema.define(version: 2019_06_22_082314) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.integer "user_id"
+  end
+
+  create_table "homeworks", force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_homeworks_on_user_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.text "conspectus"
+    t.text "tell_homework"
+    t.string "image"
+    t.string "video"
+    t.integer "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "draft", default: false, null: false
+    t.integer "priority", default: 0, null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -41,4 +73,5 @@ ActiveRecord::Schema.define(version: 2019_06_22_082314) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "homeworks", "users"
 end

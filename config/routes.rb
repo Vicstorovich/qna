@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
   root to: 'appointment#index'
 
-  resources :courses, only: %i[index]
+  resources :courses, only: %i[index] do
+    resources :lessons, only: %i[index show] do
+      resources :homeworks, only: %i[create]
+    end
+  end
 
   namespace :dashboard do
-    resources :courses
+    resource :profiles, only: %i[edit update]
+    resources :courses do
+      resources :lessons
+      resources :homeworks, only: %i[index destroy]
+    end
   end
 
   get :signup, to: "registrations#new"

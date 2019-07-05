@@ -1,0 +1,4 @@
+%ul
+  %li{:class => "#{cycle('lesson-odd', 'lesson-even')}"}
+    %p
+      = link_to lesson.title, course_lesson_path(course,lesson)
