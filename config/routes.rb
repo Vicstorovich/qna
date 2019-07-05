@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   namespace :dashboard do
     resource :profiles, only: %i[edit update]
     resources :courses do
-      resources :lessons
+      resources :lessons do
+        collection do
+          post :edit_order
+          put :update_order
+        end
+      end
       resources :homeworks, only: %i[index destroy]
     end
   end

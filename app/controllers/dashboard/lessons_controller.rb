@@ -41,6 +41,19 @@ class Dashboard::LessonsController < Dashboard::BaseController
     redirect_to dashboard_course_lessons_path
   end
 
+  def edit_order
+    @lessons = course.lessons
+  end
+
+  def update_order
+    if course.lessons.update(params[:lessons].keys, params[:lessons].values)
+      flash[:notice] = "Order lessons updated"
+      redirect_to dashboard_course_lessons_path
+    else
+      render :edit_order
+    end
+  end
+
   private
 
   def course
