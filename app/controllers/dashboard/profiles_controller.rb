@@ -12,8 +12,13 @@ class Dashboard::ProfilesController < Dashboard::BaseController
 
   private
 
+  def profile
+    @profile = current_user.profile
+  end
+  helper_method :profile
+
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
-                                  profile_attributes: [:name])
+      profile_attributes: %i[name avatar addres link])
   end
 end
