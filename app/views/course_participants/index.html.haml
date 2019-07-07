@@ -1,0 +1,5 @@
+= link_to "Back", courses_path
+%h1 Course Participants
+
+- @course_users.each do |course_user|
+  %p= "#{course_user.user.profile.name || "Unknown"} joined at #{course_user.created_at.strftime("%B %d %Y")}"

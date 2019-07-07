@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :courses
   has_many :homeworks
+  has_many :course_users, dependent: :destroy
+  has_many :participated_courses, through: :course_users, class_name: "Course", source: :course
 
   validates :email, presence: true, uniqueness: true, email: true
   validates :password, confirmation: true
@@ -29,6 +31,10 @@ class User < ApplicationRecord
 
   def valid_password?(value)
     encrypted_password == password_hash(value)
+  end
+
+  def participate_in_course?(course)
+    participated_courses.exists?(course.id)
   end
 
   private
