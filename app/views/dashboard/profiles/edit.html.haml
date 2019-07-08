@@ -7,8 +7,10 @@
     = pf.input :name
     = pf.input :addres
     = pf.input :link
-    = pf.input :avatar
+    = pf.file_field :avatar
+    = pf.hidden_field :avatar_cache
 
   = f.submit "Save"
 
-= image_tag profile.avatar.thumb.url
+= image_tag profile.avatar.thumb.url if profile.avatar?
+
