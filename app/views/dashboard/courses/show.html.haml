@@ -5,11 +5,11 @@
 - @course_users.each do |user_course|
   %li
     = user_course.user.profile.name
-  - if user_course.ban?
+  - if user_course.pupil?
     %h4 Participant
+    = link_to 'Deduct', pay_off_course_dashboard_course_course_user_path(course, user_course)
   -else
     %h4 Not a participant
-  - if user_course[:ban] == false
-    = link_to 'Enroll', dashboard_path(user_course)
-  - else
-    = link_to 'Deduct',  dashboard_path(user_course)
+    = link_to 'Enroll', enroll_for_course_dashboard_course_course_user_path(course, user_course)
+
+

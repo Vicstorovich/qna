@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  VALID_EMAIL = /^https:\/\/github\.com\//i.freeze
+  VALID_EMAIL_GITHAB = /^https:\/\/github\.com\//i.freeze
 
   belongs_to :user
 
@@ -11,7 +11,7 @@ class Profile < ApplicationRecord
   private
 
   def ensure_url_format
-    return if link =~ VALID_EMAIL
+    return if link =~ VALID_EMAIL_GITHAB
 
     errors[:link] << "Invalid GitHab url format"
   end

@@ -5,6 +5,7 @@
     = f.input :image
     %div{:id => "course_users"}
       = simple_fields_for :course_users do |p_u_f|
+        / = render "course_user_fields", f: p_u_f
         .nested-fields
           = f.association :user, collection: User.all, label_method: lambda { |user| user.profile.name }
           = link_to_remove_association "Remove user", f

@@ -37,6 +37,10 @@ class User < ApplicationRecord
     participated_courses.exists?(course.id)
   end
 
+  def expelled_from_course?(course)
+    participated_courses.exists?(course.id)
+  end
+
   def author_course?(course)
     id == course.user_id
   end

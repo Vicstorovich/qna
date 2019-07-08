@@ -6,7 +6,7 @@
       = link_to "Participants", course_course_participants_path(course)
 
     - if user_signed_in?
-      - if current_user.participate_in_course?(course) && course.user_participant?(current_user, course)
+      - if current_user.participate_in_course?(course) && course.user_participant?(current_user)
         = link_to "Unparticipate", dashboard_participated_course_path(course), method: :delete
       - else
         = link_to "Participate", dashboard_participated_courses_path(course_id: course.id), method: :post
