@@ -5,8 +5,6 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   def show
     @course_users = course.course_users
-
-    @par = params
   end
 
   def new
@@ -24,7 +22,9 @@ class Dashboard::CoursesController < Dashboard::BaseController
     end
   end
 
-  def edit; end
+  def edit
+    course.course_users.build unless course.course_users.any?
+   end
 
   def update
     if course.update course_params
@@ -50,8 +50,7 @@ class Dashboard::CoursesController < Dashboard::BaseController
   helper_method :course
 
   def course_params
-    params.require(:course).permit(:name, :image, course_users_attributes: [
-      :id, :_destroy, :user_id
-    ] )
+    params.require(:course).permit(:name, :image, course_users_attributes: %i[
+      id _destroy user_id], lessons_attributes: %i[id title priority] )
   end
 end

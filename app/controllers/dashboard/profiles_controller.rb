@@ -19,6 +19,6 @@ class Dashboard::ProfilesController < Dashboard::BaseController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
-      profile_attributes: %i[name avatar addres link])
+      profile_attributes: %i[name avatar addres link avatar_cache])
   end
 end

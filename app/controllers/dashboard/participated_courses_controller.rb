@@ -4,17 +4,18 @@ class Dashboard::ParticipatedCoursesController < Dashboard::BaseController
   end
 
   def create
-    if current_user.participate_in_course?(course)
-      flash[:notice] = "You are expelled from the course !!!"
+    if !current_user.not_participate_in_course?(course)
+      # current_user.participated_courses << course
+      current_user.participated_courses.push(course) # а так можно?
     else
-      current_user.participated_courses << course
+      flash[:notice] = "You are expelled from the course !!!" unless current_user.expelled_from_course?(course)
     end
 
     redirect_to courses_path
   end
 
   def destroy
-    current_user.participated_courses.delete(course)
+    current_user.participated_courses.delete(course) if current_user.expelled_from_course?(course)
 
     flash[:notice] = "You unsubscribed from the course !!!"
     redirect_to courses_path
@@ -23,6 +24,6 @@ class Dashboard::ParticipatedCoursesController < Dashboard::BaseController
   private
 
   def course
-    @course ||= Course.find(params[:course_id] || params[:id])
+    course ||= Course.find(params[:course_id] || params[:id])
   end
 end

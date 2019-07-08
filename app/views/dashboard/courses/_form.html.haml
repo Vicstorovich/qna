@@ -1,14 +1,14 @@
-.form-group
+= simple_form_for [:dashboard, course], html: {novalidate: true} do |f|
 
-  = simple_form_for [:dashboard, course], html: {novalidate: true} do |f|
-    = f.input :name, class: 'col-sm-2 control-label'
-    = f.input :image
-    %div{:id => "course_users"}
-      = simple_fields_for :course_users do |p_u_f|
-        .nested-fields
-          = f.association :user, collection: User.all, label_method: lambda { |user| user.profile.name }
-          = link_to_remove_association "Remove user", f
-        .links
-          = link_to_add_association "Add new user", f, :course_users
+  = f.input :name, class: 'col-sm-2 control-label'
+  = f.input :image
+  #course_users
+    = f.simple_fields_for :course_users do |p_u_f|
+      = render "course_user_fields", f: p_u_f
+      .links
+        = link_to_add_association "Add new user", f, :course_users
 
-    = f.submit 'Save'
+  = f.simple_fields_for :lessons do |child_form|
+    = child_form.input :title
+    = child_form.input :priority
+  = f.submit "Save course"

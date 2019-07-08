@@ -157,8 +157,8 @@ SimpleForm.setup do |config|
   # Automatically discover new inputs in Rails' autoload path.
   # config.inputs_discovery = true
 
-  # Cache SimpleForm inputs discovery
-  # config.cache_discovery = !Rails.env.development?
+  # Cache SimpleForm inputs discovery !Rails.env.development?
+  # config.cache_discovery = true
 
   # Default class for inputs
   # config.input_class = nil
