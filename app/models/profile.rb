@@ -1,8 +1,18 @@
 class Profile < ApplicationRecord
+  VALID_EMAIL = /^https:\/\/github\.com\//i.freeze
+
   belongs_to :user
 
   validates :user, uniqueness: true
-  validates :link, url: { schemes: ['https'] }
+  validate :ensure_url_format
 
   mount_uploader :avatar, CourseImageUploader
+
+  private
+
+  def ensure_url_format
+    return if link =~ VALID_EMAIL
+
+    errors[:link] << "Invalid GitHab url format"
+  end
 end

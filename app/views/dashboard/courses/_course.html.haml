@@ -5,3 +5,4 @@
       = link_to course.name, dashboard_course_lessons_path(course)
     = link_to "Edit", edit_dashboard_course_path(course)
     = link_to "Delete", dashboard_course_path(course), method: :delete, data: { confirm: "Are you sure?" }
+    = link_to "Users on course", dashboard_course_path(course)

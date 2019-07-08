@@ -34,6 +34,7 @@ gem 'jquery-rails'
 gem 'redis-rails'
 gem 'email_validator'
 gem "validate_url"
+gem "cocoon"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       end
       resources :homeworks, only: %i[index destroy]
     end
+    get '/course_users/:id', to: 'course_users#allow_deny_participation'
+    # get '/course_users/:id', to: 'course_users#subscribe', as: :not_banned
+    # get '/course_users/:id', to: 'course_users#subscribe', as: :not_banned
   end
 
   get :signup, to: "registrations#new"

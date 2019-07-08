@@ -3,6 +3,12 @@ class Dashboard::CoursesController < Dashboard::BaseController
     @courses = current_user.courses.all.page(params[:page]).per(2)
   end
 
+  def show
+    @course_users = course.course_users
+
+    @par = params
+  end
+
   def new
     @course = current_user.courses.build
   end
@@ -44,6 +50,8 @@ class Dashboard::CoursesController < Dashboard::BaseController
   helper_method :course
 
   def course_params
-    params.require(:course).permit(:name, :image)
+    params.require(:course).permit(:name, :image, course_users_attributes: [
+      :id, :_destroy, :user_id
+    ] )
   end
 end
