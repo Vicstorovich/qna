@@ -19,10 +19,11 @@ Rails.application.routes.draw do
         end
       end
       resources :homeworks, only: %i[index destroy]
+      resources :course_users, except: %i[index show new edit create update destroy] do
+        get 'not_pupil', on: :member
+        get 'pupil', on: :member
+      end
     end
-    get '/course_users/:id', to: 'course_users#allow_deny_participation'
-    # get '/course_users/:id', to: 'course_users#subscribe', as: :not_banned
-    # get '/course_users/:id', to: 'course_users#subscribe', as: :not_banned
   end
 
   get :signup, to: "registrations#new"

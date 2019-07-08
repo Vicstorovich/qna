@@ -5,10 +5,10 @@ class CourseUser < ApplicationRecord
   validates :course, uniqueness: { scope: :user }
 
   def unsubscribe
-    update(ban: true)
+    update(pupil: false)
   end
 
   def subscribe
-    update(ban: false)
+    update(pupil: true)
   end
 end

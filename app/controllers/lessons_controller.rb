@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   def index
-    @lessons = course.lessons.not_draft.sort_lessons.page(params[:page]).per(2)
+    @lessons = course.lessons.not_draft.page(params[:page]).per(5)
   end
 
   def show
