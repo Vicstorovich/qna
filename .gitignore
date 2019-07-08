@@ -28,6 +28,7 @@
 /config/database.yml
 /Guardfile
 /public/system/*
+/public/uploads/*
 /node_modules
 /.rspec
 /.vscode
