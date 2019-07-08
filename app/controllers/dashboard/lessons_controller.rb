@@ -1,6 +1,6 @@
 class Dashboard::LessonsController < Dashboard::BaseController
   def index
-    @lessons = course.lessons.page(params[:page]).per(2)
+    @lessons = course.lessons.page(params[:page]).per(5)
   end
 
   def new

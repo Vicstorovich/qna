@@ -33,7 +33,6 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'redis-rails'
 gem 'email_validator'
-gem "validate_url"
 gem "cocoon"
 
 group :development, :test do
