@@ -8,6 +8,7 @@ class Course < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
 
   accepts_nested_attributes_for :course_users, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :lessons
 
   mount_uploader :image, CourseImageUploader
 
