@@ -5,8 +5,6 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   def show
     @course_users = course.course_users
-
-    @par = params
   end
 
   def new

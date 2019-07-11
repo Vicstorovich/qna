@@ -12,7 +12,7 @@ class Course < ApplicationRecord
 
   mount_uploader :image, CourseImageUploader
 
-  def user_participant?(user)
-    course_users.find_by(user_id: user.id).pupil if user.participate_in_course?(self)
+  def user_not_participant?(user)
+    course_users.find_by(user_id: user.id).pupil == false unless user.not_participate_in_course?(self)
   end
 end

@@ -20,8 +20,8 @@ Rails.application.routes.draw do
       end
       resources :homeworks, only: %i[index destroy]
       resources :course_users, except: %i[index show new edit create update destroy] do
-        get 'pay_off_course', on: :member
-        get 'enroll_for_course', on: :member
+        get 'not_pupil', on: :member
+        get 'pupil', on: :member
       end
     end
   end

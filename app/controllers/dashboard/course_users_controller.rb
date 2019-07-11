@@ -1,11 +1,11 @@
 class Dashboard::CourseUsersController < Dashboard::BaseController
-  def pay_off_course
+  def not_pupil
     course_user.unsubscribe
 
     redirect_back(fallback_location: dashboard_courses_path)
   end
 
-  def enroll_for_course
+  def pupil
     course_user.subscribe
 
     redirect_back(fallback_location: dashboard_courses_path)
@@ -14,7 +14,7 @@ class Dashboard::CourseUsersController < Dashboard::BaseController
   private
 
   def course_user
-    course ||= current_user.courses.find(params[:course_id])
-    course_user ||= course.course_users.find(params[:id])
+    course = current_user.courses.find(params[:course_id])
+    course_user = course.course_users.find(params[:id])
   end
 end

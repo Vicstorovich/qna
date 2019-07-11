@@ -33,12 +33,12 @@ class User < ApplicationRecord
     encrypted_password == password_hash(value)
   end
 
-  def participate_in_course?(course)
-    participated_courses.exists?(course.id)
+  def not_participate_in_course?(course)
+    participated_courses.exists?(course.id) == false
   end
 
   def expelled_from_course?(course)
-    participated_courses.exists?(course.id)
+    course_users.find_by(course_id: course.id).pupil == false
   end
 
   def author_course?(course)

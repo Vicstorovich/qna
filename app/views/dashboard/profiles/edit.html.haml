@@ -8,7 +8,34 @@
     = pf.input :addres
     = pf.input :link
     = pf.input :avatar
+    / = pf.hidden_field :avatar_cache
+
+    / = debug pf.to_param
+    / = pf.input :avatar, disabled: true, hint: 'You cannot change your username.'
 
   = f.submit "Save"
 
 = image_tag profile.avatar.thumb.url
+%br/
+%br/
+
+/ = debug params[:user][:profile_attributes][:avatar]
+%br/
+%br/
+%br/
+%br/
+/ = debug upload
+
+/ = form_with model: current_user, url: dashboard_profiles_path, html: { method: :put }, local: true do |f|
+
+
+/   = f.fields_for :profile, :html => {:multipart => true} do |pf|
+/     = pf.label :name, 'Your question'
+/     = pf.text_field :name
+/     = pf.file_field :avatar
+/     = pf.hidden_field :avatar_cache  # сохраняет изображения если форма не валид
+
+/     / = debug pf.to_param
+/     / = pf.input :avatar, disabled: true, hint: 'You cannot change your username.'
+
+/   = f.submit "Save"

@@ -4,10 +4,11 @@ class Dashboard::ParticipatedCoursesController < Dashboard::BaseController
   end
 
   def create
-    if current_user.expelled_from_course?(course)
-      flash[:notice] = "You are expelled from the course !!!"
+    if current_user.not_participate_in_course?(course)
+      # current_user.participated_courses << course
+      current_user.participated_courses.push(course) # а так можно?
     else
-      current_user.participated_courses << course
+      flash[:notice] = "You are expelled from the course !!!" if current_user.expelled_from_course?(course)
     end
 
     redirect_to courses_path
