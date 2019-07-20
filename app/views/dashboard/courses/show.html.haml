@@ -1,15 +1,15 @@
-= link_to "Back", dashboard_courses_path
+= link_to t(".back"), dashboard_courses_path
 
-%h1"#{course.name}" course participants
+%h1 #{t(".text3", name: course.name)}
 %ul
 - @course_users.each do |user_course|
   %li
     = user_course.user.profile.name
   - if user_course.pupil?
-    %h4 Participant
-    = link_to 'Deduct', not_pupil_dashboard_course_course_user_path(course, user_course)
+    %h4 #{t(".text1")}
+    = link_to t('.deduct_html'), not_pupil_dashboard_course_course_user_path(course, user_course)
   -else
-    %h4 Not a participant
-    = link_to 'Enroll', pupil_dashboard_course_course_user_path(course, user_course)
+    %h4 #{t(".text2")}
+    = link_to t(".enroll_html"), pupil_dashboard_course_course_user_path(course, user_course)
 
 

@@ -32,3 +32,5 @@
 /node_modules
 /.rspec
 /.vscode
+/.env
+/.env.test

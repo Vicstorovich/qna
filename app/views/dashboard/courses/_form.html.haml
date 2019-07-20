@@ -6,9 +6,9 @@
     = f.simple_fields_for :course_users do |p_u_f|
       = render "course_user_fields", f: p_u_f
       .links
-        = link_to_add_association "Add new user", f, :course_users
+        = link_to_add_association t(".add"), f, :course_users
 
   = f.simple_fields_for :lessons do |child_form|
-    = child_form.input :title
-    = child_form.input :priority
-  = f.submit "Save course"
+    = child_form.input :title, label: t(".title")
+    = child_form.input :priority, label: t(".priority")
+  = f.submit

@@ -1,0 +1,126 @@
+ru:
+
+  dashboard:
+    courses:
+      show:
+        back: "Назад"
+        text1: "Участник"
+        text2: "Не участвует"
+        text3: "Участники курса %{name}"
+        deduct_html: "<span style='color: red'> Отчислить </span>"
+        enroll_html: "<span style='color: green'> Зачислить </span>"
+      new:
+        back: "Назад"
+        text: "Новый курс"
+      index:
+        text: "Курсы"
+        new: "Новый курс"
+      edit:
+        back: "Назад"
+        edit: "Редактирование"
+      course_user_fields:
+        remove: "Удалить ученика"
+      course:
+        edit: "Редактировать"
+        delete: "Удалить"
+        users: "Участники курса"
+      form:
+        add: "Добавить нового ученика"
+        title: "Название"
+        priority: "Приоритет"
+    lessons:
+      show:
+        back: "Назад"
+      new:
+        back: "Назад"
+      index:
+        new: "Новый урок"
+        home: "Смотреть домашние задания"
+        course: "Курсы"
+        text: "Уроки"
+        order: "Указать порядок загрузки уроков"
+        edit: "Редактировать"
+        delete: "Удалить"
+        notice_new: "Ваш урок успешно создан."
+        notice_update: "Урок был успешно обновлен."
+        notice_delete: "Урок успешно удален"
+        order_update: "Порядок отображения уроков обновлен"
+      edit_order:
+        text: "Редактирование порядка отображения уроков"
+        submit: "Обновить порядок"
+    homeworks:
+      index:
+        text: "Выбор урока"
+        back: "Назад"
+        submit: "Выбрать"
+        home: "Домашняя работа"
+      homework:
+        text: "Иммя ученика:"
+        delete: "Удалить"
+        destroy: "Домашнее задание было успешно удалено"
+        title: "все"
+
+  course_participants:
+    index:
+      back: "Назад"
+      text: "Участники курсов"
+      jonet: "участвует с"
+
+  courses:
+    course:
+      participants: "Участники"
+      participate: "Принять участие"
+      unparticipate: "Отказаться от курса"
+    index:
+      back: "Назад"
+      text: "Курсы"
+
+  lessons:
+    show:
+      send: "Отправить"
+      response: "Поле ввода ответа"
+      text: "ВСТАВЬТЕ СЮДА ВАШЕ ДЗ"
+      back: "Назад"
+    index:
+      text: "Занятия"
+
+  helpers:
+    submit:
+      user:
+        update: "Обновить профиль"
+      lesson:
+        create: "Создать"
+    label:
+      lesson:
+        priority: "Очерёдность показа"
+        draft: "Черновик"
+
+  appointment:
+    index:
+      welcome: "Приветствую Вас в нашем приложении!"
+
+  shared:
+    menu:
+      edit_profile: "Редактировать профиль"
+      log_out: "Выйти"
+      log_in: "Войти"
+      sig_in: "Регистрация"
+      courses: "Пройти курсы"
+
+  registrations:
+    create:
+      notice_yes: "Вы успешно вошли в систему."
+      notice_no: "Вы уже зарегистрированы!"
+    new:
+      submit: "Зарегистрироваться"
+
+  sessions:
+    create:
+      notice_yes: "Вы успешно вошли в систему."
+      notice_no: "Неверный адрес электронной почты или пароль."
+    destroy:
+      notice: "Вы вышли из системы"
+    new:
+      submit: "Войти"
+
+

@@ -1,0 +1,28 @@
+en:
+  activerecord:
+    models:
+      course: "Course"
+      homework: "Homework"
+      lesson: "Lesson"
+      profile: "Profile"
+      user: "User"
+    attributes:
+      course:
+        name: "name"
+        image: 'image'
+      homework:
+        body: "body"
+      lesson:
+        title: "title"
+        description: "description"
+        conspectus: "conspectus"
+        tell_homework: "tell_homework"
+        priority: "priority"
+        draft: "draft"
+        image: "image"
+        video: "video"
+      profiles:
+        name: "name"
+        avatar: "avatar"
+        addres: "addres"
+        link: "link"

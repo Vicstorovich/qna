@@ -1,16 +1,14 @@
-= simple_form_for current_user, url: dashboard_profiles_path, html: { method: :put } do |f|
+= simple_form_for current_user, url: dashboard_profiles_path, html: { method: :put, class: 'simple_form'  } do |f|
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
-
   = f.simple_fields_for :profile do |pf|
     = pf.input :name
     = pf.input :addres
     = pf.input :link
-    = pf.file_field :avatar
+    = pf.file_field :avatar, label: "dfdfd"
     = pf.hidden_field :avatar_cache
-
-  = f.submit "Save"
+  = f.submit
 
 = image_tag current_user.profile.avatar.thumb.url
 

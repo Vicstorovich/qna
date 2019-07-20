@@ -12,7 +12,7 @@ class Dashboard::LessonsController < Dashboard::BaseController
     @lesson.assign_attributes(lesson_params)
 
     if @lesson.save
-      flash[:notice] = "Your lesson successfully created."
+      flash[:notice] = t(".notice_new")
       redirect_to dashboard_course_lessons_path
     else
       render :new
@@ -27,7 +27,7 @@ class Dashboard::LessonsController < Dashboard::BaseController
 
   def update
     if lesson.update lesson_params
-      flash[:notice] = "The lesson was updated successfully."
+      flash[:notice] = t(".notice_update")
       redirect_to dashboard_course_lessons_path
     else
       render :edit
@@ -37,7 +37,7 @@ class Dashboard::LessonsController < Dashboard::BaseController
   def destroy
     lesson.destroy
 
-    flash[:notice] = "lesson was successfully deleted"
+    flash[:notice] = t(".notice_delete")
     redirect_to dashboard_course_lessons_path
   end
 
@@ -47,7 +47,7 @@ class Dashboard::LessonsController < Dashboard::BaseController
 
   def update_order
     if course.lessons.update(params[:lessons].keys, params[:lessons].values)
-      flash[:notice] = "Order lessons updated"
+      flash[:notice] = t(".order_update")
       redirect_to dashboard_course_lessons_path
     else
       render :edit_order

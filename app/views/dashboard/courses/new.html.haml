@@ -1,5 +1,5 @@
-= link_to "Back",  dashboard_courses_path, class: 'btn btn-success'
+= link_to t(".back"),  dashboard_courses_path, class: 'btn btn-success'
 
-%h1 New Course
+%h1 #{t(".text")}
 
 = render 'form', resource: @course
