@@ -31,5 +31,7 @@ module Qna
     config.i18n.available_locales = %i[ru en]
     config.i18n.default_locale = :en
     config.time_zone = ENV["TIME_ZONE"]
+    # config.x.english_website_url = "http://www.application.en."
+    # config.x.russian_website_url = "http://www.application.ru."
   end
 end

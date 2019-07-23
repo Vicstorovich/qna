@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope "(:lang)", lang: /ru|en/ do
+  # scope "(:lang)" do
     root to: 'appointment#index'
 
     resources :courses, only: %i[index] do
@@ -33,5 +33,5 @@ Rails.application.routes.draw do
     resource :registrations, only: %i[create]
 
     resource :sessions, only: %i[create destroy]
-  end
+  # end
 end

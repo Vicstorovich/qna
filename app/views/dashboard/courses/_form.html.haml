@@ -9,6 +9,6 @@
         = link_to_add_association t(".add"), f, :course_users
 
   = f.simple_fields_for :lessons do |child_form|
-    = child_form.input :title, label: t(".title")
-    = child_form.input :priority, label: t(".priority")
+    = child_form.input :title
+    = child_form.input :priority
   = f.submit

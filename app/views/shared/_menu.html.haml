@@ -1,10 +1,12 @@
 
 %nav.navbar.navbar-light.bg-dark
   %span.navbar-brand.mb-0.h1
-    - if I18n.locale == :ru
-      = link_to 'En', { lang: :en }
+    - if I18n.locale == I18n.default_locale
+      / = link_to 'En', { lang: :en }
+      = link_to("Ru", "http://localhost:3000.ru#{request.env['PATH_INFO']}")
     - else
-      = link_to 'Ru', { lang: :ru }
+      / = link_to 'Ru', { lang: :ru }
+      = link_to("En", "http://localhost:3000.en#{request.env['PATH_INFO']}")
   %span.navbar-brand.mb-0.h1
     / - if user_signed_in?
     /   - if current_user.admin_status?
@@ -19,7 +21,6 @@
         |
       %li.nav-item
         %a.nav-link= link_to t(".courses"), courses_path
-        / # %a.nav-link= link_to t(".courses"), courses_path      
     - else
       %li.nav-item
         %a.nav-link= link_to t(".sig_in"), signup_path
@@ -29,7 +30,8 @@
       
     %li.nav-item
       %a.nav-link.disabled
-      - if I18n.locale == :ru
-        = link_to 'En', { lang: :en }
-      - else
+      - if I18n.locale == I18n.default_locale
         = link_to 'Ru', { lang: :ru }
+      - else
+        = link_to 'En', { lang: :en }
+

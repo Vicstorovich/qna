@@ -35,6 +35,7 @@ gem 'redis-rails'
 gem 'email_validator'
 gem "cocoon"
 gem 'dotenv-rails', groups: [:development, :test]
+# gem "subdomain_locale"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
