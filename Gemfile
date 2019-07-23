@@ -35,6 +35,7 @@ gem 'redis-rails'
 gem 'email_validator'
 gem "cocoon"
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'rails-i18n'
 # gem "subdomain_locale"
 
 group :development, :test do
