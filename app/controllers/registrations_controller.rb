@@ -8,10 +8,10 @@ class RegistrationsController < ApplicationController
     if @user.save
       sign_in @user
 
-      flash[:notice] = "Signed in successfully."
+      flash[:notice] = t('.notice_yes')
       redirect_to dashboard_courses_path
     else
-      flash[:notice] = "You are already registered!"
+      flash[:notice] = t('.notice_no')
       render :new
     end
   end

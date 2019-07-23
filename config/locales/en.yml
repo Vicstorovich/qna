@@ -1,33 +1,128 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+
+  dashboard:
+    courses:
+      show:
+        back: "Back"
+        text1: "Participant"
+        text2: "Not a participant "
+        text3: "Course participants %{name}"
+        deduct_html: '<span style="color: red"> Deduct </span>'
+        enroll_html: "<span style='color: green'> Enroll </span>"
+      new:
+        back: "Back"
+        text: "New Course"
+      index:
+        new: "New course"
+        text: "Courses"
+      edit:
+        back: "Back"
+        edit: "Edit"
+      course_user_fields:
+        remove: "Remove user"
+      course:
+        edit: "Edit"
+        delete: "Delete"
+        users: "Users on course"
+      form:
+        add: "Add new user"
+        title: "Title"
+        priority: "Priority"
+    lessons:
+      show:
+        back: "Back"
+      new:
+        back: "Back"
+      index:
+        new: "New lesson"
+        home: "Homework"
+        course: "Courses"
+        text: "Lessons"
+        order: "Edit order lessons"
+        edit: "Edit"
+        delete: "Delete"
+        notice_new: "Your lesson successfully created."
+        notice_update: "The lesson was updated successfully."
+        notice_delete: "Lesson was successfully deleted"
+        order_update: "Order lessons updated"
+      edit_order:
+        text: "Edit order"
+        submit: "Update order"
+    homeworks:
+      index:
+        text: "Select lesson"
+        back: "Back"
+        submit: "Select"
+        home: "Homeworks"
+      homework:
+        text: "Author name:"
+        delete: "Delete"
+        destroy: "Homework was successfully deleted"
+        title: "all"
+
+
+  course_participants:
+    index:
+      back: "Back"
+      text: "Course Participants"
+      jonet: "joined at"
+
+  courses:
+    course:
+      participants: "Participants"
+      participate: "Participate"
+      unparticipate: "Unparticipate"
+    index:
+      back: "Back"
+      text: "Courses"
+
+  lessons:
+    show:
+      send: "Send"
+      response: "Response input field"
+      text: "Send your homework"
+      back: "Back"
+    index:
+      text: "Lessons"
+
+  helpers:
+    submit:
+      user:
+        update: "Update profile"
+      lesson:
+        create: "Save"
+      label:
+        priority: "Priority"
+        draft: "Draft"
+
+
+  appointment:
+    index:
+      welcome: "Welcome dia User"
+
+  shared:
+    menu:
+      edit_profile: "Edit profile"
+      log_out: "Log out"
+      log_in: "Log in"
+      sig_in: "Sig in"
+      courses: "All courses"
+
+  registrations:
+    create:
+      notice_yes: "Signed in successfully."
+      notice_no: "You are already registered!"
+    new:
+      submit: "Registration"
+
+  sessions:
+    create:
+      notice_yes: "Signed in successfully."
+      notice_no: "Invalid Email or password."
+    new:
+      submit: "Log in"
+    destroy:
+      notice: "Signed out successfully."
+
+
+

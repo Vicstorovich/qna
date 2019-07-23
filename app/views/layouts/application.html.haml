@@ -10,23 +10,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-inverse.menu
-      %ul.nav.nav-tabs
-        - if user_signed_in?
-          %li.active{:role => "presentation"}
-            %a{:href => "#"}= link_to "Edit profile", edit_dashboard_profiles_path
-            %br/
-          %li.active{:role => "presentation"}
-            %a{:href => "#"}= link_to "Log out", sessions_path, method: :delete
-            %br/
-          %li{:role => "presentation"}
-            %a{:href => "#"}= link_to "All courses", courses_path
-        - else
-          %li{:role => "presentation"}
-            %a{:href => "#"}= link_to "Log in", login_path
-            %br/
-          %li{:role => "presentation"}
-            %a{:href => "#"}= link_to "Sign up", signup_path
+    = render "shared/menu"
 
     #main-container.container-fluid
       .container
@@ -36,3 +20,4 @@
           .col-9.content
             %p#notice= notice
             = yield
+    = render "shared/footer"

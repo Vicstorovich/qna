@@ -1,4 +1,4 @@
-%h1 Edit order
+%h1 #{t(".text")}
 = form_with url: update_order_dashboard_course_lessons_path(course), method: :put, local: true do
   - @lessons.each do |lesson|
     = fields_for "lessons[]", lesson do |f|
@@ -9,5 +9,4 @@
       %br/
       = f.check_box :draft
       = f.label :draft
-
-  %p= submit_tag "Update order"
+  %p= submit_tag t(".submit")

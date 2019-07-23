@@ -1,0 +1,48 @@
+ru:
+  simple_form:
+    labels:
+      profile:
+        name: 'Имя'
+        addres: 'Адрес'
+        link: "Ссылка"
+        avatar: "Аватар"
+      user:
+        email: "Ел.адрес"
+        password: "Пароль"
+        password_confirmation: "Пароль повторить"
+      lesson:
+        priority: "Очередность"
+        title: "Название"
+        description: "Описание"
+        conspectus: "Конспект"
+        tell_homework: "Домашнее задание"
+        image: "Изображение"
+        video: "Скринкаст"
+        draft: "Черновик"
+      course:
+        name: "Название"
+        image: "Заставка"
+    # hints:
+    #   profile:
+    #     name: 'Имя'
+    #     addres: 'Адрес'
+    #     link: "Ссылка"
+    #     avatar: "Аватар"
+
+    #   user:
+    #     email: "Ел.адрес"
+    #     password: "Пароль"
+    #     password_confirmation: "Пароль повторить"
+
+    # placeholders:
+    #   profile:
+    #     name: 'Имя'
+    #     addres: 'Адрес'
+    #     link: "Ссылка"
+    #     avatar: "Аватар"
+    # include_blanks:
+    #   user:
+    #     age: 'Rather not say'
+    # prompts:
+    #   user:
+    #     role: 'Select your role'

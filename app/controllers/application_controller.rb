@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :set_locale
+
   def sign_in(user)
     session[:user_id] = user.id
   end
@@ -21,5 +23,21 @@ class ApplicationController < ActionController::Base
     unless user_signed_in?
       redirect_to root_path
     end
+  end
+
+  def default_url_options
+    { lang: I18n.locale }
+  end
+
+  protected
+
+  def set_locale
+    I18n.locale = params[:lang] || I18n.default_locale
+    # I18n.locale = extract_locale || I18n.default_locale
+  end
+
+  def extract_locale
+    parsed_locale = request.subdomains.first
+    I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
   end
 end

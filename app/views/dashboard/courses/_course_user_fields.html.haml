@@ -1,3 +1,3 @@
 .nested-fields
   = f.association :user, collection: User.all, label_method: lambda { |user| user.profile.name }
-  = link_to_remove_association "Remove user", f
+  = link_to_remove_association t(".remove"), f

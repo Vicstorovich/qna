@@ -18,14 +18,20 @@ module Qna
 
     config.generators do |g|
       g.test_framework :rspec,
-                       view_specs: false,
-                       helper_specs: false,
-                       routing_specs: false,
-                       request_specs: false
+            view_specs: false,
+            helper_specs: false,
+            routing_specs: false,
+            request_specs: false
 
       g.helper          false
       g.stylesheets     false
       g.javascripts     false
     end
+
+    config.i18n.available_locales = %i[ru en]
+    config.i18n.default_locale = :en
+    config.time_zone = ENV["TIME_ZONE"]
+    # config.x.english_website_url = "http://www.application.en."
+    # config.x.russian_website_url = "http://www.application.ru."
   end
 end

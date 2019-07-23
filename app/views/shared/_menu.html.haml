@@ -1,0 +1,37 @@
+
+%nav.navbar.navbar-light.bg-dark
+  %span.navbar-brand.mb-0.h1
+    / - if I18n.locale == I18n.default_locale
+    /   / = link_to 'En', { lang: :en }
+    /   = link_to("Ru", "http://ru.localizer.com:3000#{request.env['PATH_INFO']}")
+    / - else
+    /   / = link_to 'Ru', { lang: :ru }
+    /   = link_to("En", "http://en.localizer.com:3000#{request.env['PATH_INFO']}")
+  %span.navbar-brand.mb-0.h1
+    / - if user_signed_in?
+    /   - if current_user.admin_status?
+    /     = link_to t('.adminpanel')
+  %ul.nav.justify-content-end
+    - if user_signed_in?
+      %li.nav-item
+        %a.nav-link= link_to t(".edit_profile"), edit_dashboard_profiles_path
+        |
+      %li.nav-item
+        %a.nav-link= link_to t(".log_out"), sessions_path, method: :delete
+        |
+      %li.nav-item
+        %a.nav-link= link_to t(".courses"), courses_path
+    - else
+      %li.nav-item
+        %a.nav-link= link_to t(".sig_in"), signup_path
+        | 
+      %li.nav-item
+        %a.nav-link= link_to t(".log_in"), login_path
+      
+    %li.nav-item
+      %a.nav-link.disabled
+      - if I18n.locale == I18n.default_locale
+        = link_to 'Ru', { lang: :ru }
+      - else
+        = link_to 'En', { lang: :en }
+

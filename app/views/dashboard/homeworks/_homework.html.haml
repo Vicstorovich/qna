@@ -3,6 +3,6 @@
     %li
       = link_to homework.body
     %p
-      Author name:
+      #{t(".text")}
       = author_homework(homework)
-    = link_to "Delete", dashboard_course_homework_path(course, homework), method: :delete, data: { confirm: "Are you sure?" }
+    = link_to t(".delete"), dashboard_course_homework_path(course, homework), method: :delete, data: { confirm: "Are you sure?" }
