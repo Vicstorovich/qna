@@ -45,6 +45,13 @@ class User < ApplicationRecord
     id == course.user_id
   end
 
+  def send_reset_password_instructions!
+    self.reset_password_token = SecureRandom.hex(12)
+    save!
+
+    UsersMailer.reset_password_instructions(self).deliver_now
+  end
+
   private
 
   def password_hash(value)

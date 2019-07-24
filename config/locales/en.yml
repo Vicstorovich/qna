@@ -95,6 +95,19 @@ en:
         priority: "Priority"
         draft: "Draft"
 
+  passwords:
+    create:
+      error: "User not found!"
+    create:
+      text: "Password recovery"
+      send: "Recovery instruction was send to"
+    edit:
+      text: "Password recovery"
+      submit: "Reset password"
+    new:
+      text: "Password recovery"
+      submit: "Send recovery instructions"
+
 
   appointment:
     index:
@@ -121,6 +134,7 @@ en:
       notice_no: "Invalid Email or password."
     new:
       submit: "Log in"
+      link: "Forgot password"
     destroy:
       notice: "Signed out successfully."
 

@@ -68,6 +68,6 @@ class Dashboard::LessonsController < Dashboard::BaseController
 
   def lesson_params
     params.require(:lesson).permit(:title, :description, :conspectus, :tell_homework,
-     :image, :video, :draft, :priority)
+     :image, :video, :draft, :priority, :start_date)
   end
 end

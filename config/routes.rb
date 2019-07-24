@@ -34,5 +34,7 @@ Rails.application.routes.draw do
     resource :registrations, only: %i[create]
 
     resource :sessions, only: %i[create destroy]
+
+    resource :passwords, only: [:new, :create, :edit, :update]
   end
 end
