@@ -1,6 +1,20 @@
 = simple_form_for [:dashboard, course], html: {novalidate: true} do |f|
   = f.input :name, class: 'col-sm-2 control-label'
   = f.input :image
+
+  = f.simple_fields_for :recorded_courses do |child_form|
+    = child_form.number_field :number_hours_video
+
+  = f.simple_fields_for :recorded_intensifes do |child_form|
+    = child_form.number_field :number_hours_video
+    = child_form.number_field :number_hours_practice
+
+  = f.simple_fields_for :online_intensifes do |child_form|
+    = child_form.number_field :number_hours_video
+    = child_form.number_field :number_hours_practice
+    = child_form.datetime_local_field :course_start_date
+    = child_form.datetime_local_field :course_end_date
+
   #course_users
     = f.simple_fields_for :course_users do |p_u_f|
       = render "course_user_fields", f: p_u_f
@@ -11,4 +25,3 @@
     = child_form.input :title
     = child_form.input :priority
   = f.submit
-

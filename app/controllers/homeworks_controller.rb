@@ -4,7 +4,7 @@ class HomeworksController < ApplicationController
     @homework.user = current_user
     @homework.assign_attributes(homework_params)
 
-    flash[:notice] = "Your homework successfully created." if @homework.save
+    flash[:notice] = t('.text1') if @homework.save
     redirect_to course_lesson_path(course, lesson)
   end
 

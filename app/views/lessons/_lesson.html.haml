@@ -1,4 +1,8 @@
-%ul
-  %li{:class => "#{cycle('lesson-odd', 'lesson-even')}"}
-    %p
-      = link_to lesson.title, course_lesson_path(course,lesson)
+- if type_course(course) == "OnlineIntensife"
+  - if course_start_date(course) < lesson_start_date(lesson)
+    = render "lessons_by_type", lesson: lesson
+- elsif type_course(course) == "RecordedIntensife"
+  - if lesson_one?(course, lesson) || another_lesson?(course, lesson, current_user) || lesson.homeworks.exists?
+    = render "lessons_by_type", lesson: lesson
+-else
+  = render "lessons_by_type", lesson: lesson

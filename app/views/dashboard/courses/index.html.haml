@@ -1,4 +1,6 @@
-= link_to t(".new"), new_dashboard_course_path
+= link_to t(".new1"), new_dashboard_course_path(data: :recorded_courses), class: 'btn btn-success'
+= link_to t(".new2"), new_dashboard_course_path(data: :recorded_intensifes), class: 'btn btn-success'
+= link_to t(".new3"), new_dashboard_course_path(data: :online_intensifes), class: 'btn btn-success'
 
 %h1 #{t(".text")}
 .courses
@@ -6,3 +8,5 @@
 %br/
 %br/
 = paginate @courses
+
+

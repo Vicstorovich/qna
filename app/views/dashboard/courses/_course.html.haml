@@ -1,6 +1,7 @@
 %div{class: "course-#{course.id}"}
   %ul
     %li{class: "image"}
+      = course_type(course)
       = image_tag course.image.thumb.url
       = link_to course.name, dashboard_course_lessons_path(course)
     = link_to t(".edit"), edit_dashboard_course_path(course)

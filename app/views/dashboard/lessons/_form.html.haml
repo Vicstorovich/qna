@@ -11,5 +11,6 @@
     = f.input :tell_homework
     = f.input :image
     = f.input :video
-    = f.datetime_local_field :start_date
+    - if type_course(course) == "OnlineIntensife"
+      = f.datetime_local_field :start_date
     = f.submit

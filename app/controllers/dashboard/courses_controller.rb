@@ -1,6 +1,6 @@
 class Dashboard::CoursesController < Dashboard::BaseController
   def index
-    @courses = current_user.courses.all.page(params[:page]).per(2)
+    @courses = Course.all.page(params[:page]).per(2)
   end
 
   def show
@@ -9,13 +9,15 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   def new
     @course = current_user.courses.build
+    @course.send(params[:data]).build
+    @data = params[:data]
   end
 
   def create
     @course = current_user.courses.build(course_params)
 
     if @course.save
-      flash[:notice] = "Your course successfully created."
+      flash[:notice] = t('.text1')
       redirect_to dashboard_courses_path
     else
       render :new
@@ -28,7 +30,7 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   def update
     if course.update course_params
-      flash[:notice] = "The course was updated successfully."
+      flash[:notice] = t('.text1')
       redirect_to dashboard_courses_path
     else
       render :edit
@@ -38,11 +40,15 @@ class Dashboard::CoursesController < Dashboard::BaseController
   def destroy
     course.destroy
 
-    flash[:notice] = "Course was successfully deleted"
+    flash[:notice] = t('.text1')
     redirect_to dashboard_courses_path
   end
 
   private
+
+  def course_type(arg)
+    send(arg)
+  end
 
   def course
     @course ||= current_user.courses.find(params[:id])
@@ -51,6 +57,9 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   def course_params
     params.require(:course).permit(:name, :image, course_users_attributes: %i[
-      id _destroy user_id], lessons_attributes: %i[id title priority] )
+      id _destroy user_id], lessons_attributes: %i[id title priority],
+      online_intensifes_attributes: %i[id number_hours_video number_hours_practice course_start_date course_end_date],
+        recorded_intensifes_attributes: %i[id number_hours_video number_hours_practice],
+        recorded_courses_attributes: %i[id number_hours_video] )
   end
 end

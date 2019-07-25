@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_164904) do
+ActiveRecord::Schema.define(version: 2019_07_25_143056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "additional_courses", force: :cascade do |t|
+    t.string "number_hours_video", default: "0", null: false
+    t.string "number_hours_practice", default: "0", null: false
+    t.string "course_start_date", default: "0", null: false
+    t.string "course_end_date", default: "0", null: false
+    t.string "additionable_type"
+    t.bigint "additionable_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["additionable_type", "additionable_id"], name: "index_additional_on_additionable_type_and_additionable_id"
+    t.index ["type", "additionable_id"], name: "index_additional_courses_on_type_and_additionable_id", unique: true
+  end
 
   create_table "course_users", force: :cascade do |t|
     t.integer "course_id", null: false

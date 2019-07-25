@@ -1,7 +1,21 @@
 en:
 
   dashboard:
+    profiles:
+      update:
+        text1: "The profile was updated successfully."
+    participated_courses:
+      create:
+        text1: "You are expelled from the course !!!"
+      destroy:
+        text1: "You unsubscribed from the course !!!"
     courses:
+      create:
+        text1: "Your course successfully created."
+      update:
+        text1: "The course was updated successfully."
+      destroy:
+        text1: "Course was successfully deleted"
       show:
         back: "Back"
         text1: "Participant"
@@ -13,7 +27,9 @@ en:
         back: "Back"
         text: "New Course"
       index:
-        new: "New course"
+        new1: "New Recorded courses"
+        new2: "New Recorded intensifes course"
+        new3: "New Online intensifes course"
         text: "Courses"
       edit:
         back: "Back"
@@ -24,6 +40,9 @@ en:
         edit: "Edit"
         delete: "Delete"
         users: "Users on course"
+        type1: "Course online intensife"
+        type2: "Recorded Course"
+        type3: "Course recorded intensife"
       form:
         add: "Add new user"
         title: "Title"
@@ -49,11 +68,15 @@ en:
         text: "Edit order"
         submit: "Update order"
     homeworks:
+      destroy:
+        text1: "homework was successfully deleted"
       index:
         text: "Select lesson"
         back: "Back"
         submit: "Select"
         home: "Homeworks"
+      create:
+        text1: "Your homework successfully created."
       homework:
         text: "Author name:"
         delete: "Delete"
@@ -72,6 +95,14 @@ en:
       participants: "Participants"
       participate: "Participate"
       unparticipate: "Unparticipate"
+      type1: "Course online intensife"
+      type2: "Recorded Course"
+      type3: "Course recorded intensife"
+      text1: "access to the course"
+      text2: "the end date of the course"
+      text3: "the start date of the course"
+      text4: "number of hours of practice"
+      text5: "number of hours of video"
     index:
       back: "Back"
       text: "Courses"
