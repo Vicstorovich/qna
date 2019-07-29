@@ -2,4 +2,5 @@
 
 %h1 #{t(".text")}
 
-= render 'form', resource: @course
+= render "form_#{course.type.underscore}", course: course
+

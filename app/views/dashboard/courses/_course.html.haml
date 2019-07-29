@@ -1,8 +1,0 @@
-%div{class: "course-#{course.id}"}
-  %ul
-    %li{class: "image"}
-      = image_tag course.image.thumb.url
-      = link_to course.name, dashboard_course_lessons_path(course)
-    = link_to t(".edit"), edit_dashboard_course_path(course)
-    = link_to t(".delete"), dashboard_course_path(course), method: :delete, data: { confirm: "Are you sure?" }
-    = link_to t(".users"), dashboard_course_path(course)

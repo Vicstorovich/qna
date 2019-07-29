@@ -1,0 +1,5 @@
+- if lesson_one?(course, lesson) || lesson.homeworks.exists? || another_lesson?(course, lesson, current_user)
+  %ul
+    %li{:class => "#{cycle('lesson-odd', 'lesson-even')}"}
+      %p
+        = link_to lesson.title, course_lesson_path(course,lesson)

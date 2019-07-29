@@ -1,0 +1,7 @@
+%h1 #{ t('.text') }
+
+= simple_form_for @user, url: passwords_path, html: { method: :put } do |f|
+  = hidden_field_tag :token, params[:token]
+  = f.input :password
+  = f.input :password_confirmation
+  = f.submit t(".submit")

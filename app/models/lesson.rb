@@ -9,4 +9,8 @@ class Lesson < ApplicationRecord
 
   mount_uploader :image, LessonImageUploader
   mount_uploader :video, VideoUploader
+
+  def self.another_lesson(id)
+    find(id).priority + 1
+  end
 end

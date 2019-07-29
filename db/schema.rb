@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_07_094821) do
+ActiveRecord::Schema.define(version: 2019_07_27_183806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(version: 2019_07_07_094821) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.integer "user_id"
+    t.string "type", default: "Course", null: false
+    t.integer "number_hours_video"
+    t.integer "number_hours_practice"
+    t.date "course_start_date"
+    t.date "course_end_date"
   end
 
   create_table "homeworks", force: :cascade do |t|
@@ -53,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_07_07_094821) do
     t.datetime "updated_at", null: false
     t.boolean "draft", default: false, null: false
     t.integer "priority", default: 0, null: false
+    t.date "start_date"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -81,6 +87,7 @@ ActiveRecord::Schema.define(version: 2019_07_07_094821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
+    t.string "reset_password_token"
     t.index ["email"], name: "index_users_on_email"
   end
 

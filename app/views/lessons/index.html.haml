@@ -1,6 +1,9 @@
-%h1 #{t(".text")}
+%h1 #{t(".text")} "#{course.type}"
 .lessons
-  = render @lessons
+  - @lessons.each do |lesson|
+    = render "#{lesson.course.type.underscore}", lesson: lesson
 %br/
 %br/
 = paginate @lessons
+
+

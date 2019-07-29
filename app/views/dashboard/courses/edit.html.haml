@@ -2,4 +2,4 @@
 
 %h1 #{t(".edit")} #{course.name}
 
-= render 'form', course: course
+= render "form_#{course.type.underscore}", course: course

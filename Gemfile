@@ -45,6 +45,7 @@ group :development, :test do
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem 'rubocop-rspec', require: false
   gem 'seed_dump'
+  gem 'letter_opener'
 end
 
 group :development do
@@ -62,6 +63,7 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
   gem "rack-livereload"
   gem 'rails_real_favicon'
+  gem 'router-visualizer'
 end
 
 group :test do

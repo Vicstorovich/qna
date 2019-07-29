@@ -8,14 +8,14 @@ class Dashboard::CoursesController < Dashboard::BaseController
   end
 
   def new
-    @course = current_user.courses.build
+    @course = type_class.new
   end
 
   def create
     @course = current_user.courses.build(course_params)
 
     if @course.save
-      flash[:notice] = "Your course successfully created."
+      flash[:notice] = t(".create")
       redirect_to dashboard_courses_path
     else
       render :new
@@ -28,7 +28,7 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   def update
     if course.update course_params
-      flash[:notice] = "The course was updated successfully."
+      flash[:notice] = t(".update")
       redirect_to dashboard_courses_path
     else
       render :edit
@@ -38,7 +38,7 @@ class Dashboard::CoursesController < Dashboard::BaseController
   def destroy
     course.destroy
 
-    flash[:notice] = "Course was successfully deleted"
+    flash[:notice] = t(".destroy")
     redirect_to dashboard_courses_path
   end
 
@@ -50,7 +50,22 @@ class Dashboard::CoursesController < Dashboard::BaseController
   helper_method :course
 
   def course_params
-    params.require(:course).permit(:name, :image, course_users_attributes: %i[
-      id _destroy user_id], lessons_attributes: %i[id title priority] )
+    params.require(type.underscore.to_sym).permit(:type, :name, :image,
+     :number_hours_video, :number_hours_practice, :course_start_date,
+      :course_end_date,course_users_attributes: %i[id _destroy user_id],
+       lessons_attributes: %i[id title priority] )
+  end
+
+  def set_type
+    @type = type
+  end
+  helper_method :set_type
+
+  def type
+    Course.types.include?(params[:type]) ? params[:type] : "Course"
+  end
+
+  def type_class
+    type.constantize
   end
 end

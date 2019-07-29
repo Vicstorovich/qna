@@ -13,7 +13,7 @@ class Dashboard::LessonsController < Dashboard::BaseController
 
     if @lesson.save
       flash[:notice] = t(".notice_new")
-      redirect_to dashboard_course_lessons_path
+      redirect_to sti_dashboard_course_lesson_path
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Dashboard::LessonsController < Dashboard::BaseController
   def update
     if lesson.update lesson_params
       flash[:notice] = t(".notice_update")
-      redirect_to dashboard_course_lessons_path
+      redirect_to sti_dashboard_course_lesson_path
     else
       render :edit
     end
@@ -56,8 +56,16 @@ class Dashboard::LessonsController < Dashboard::BaseController
 
   private
 
+  def type
+    Course.types.include?(params[:type]) ? params[:type] : "Course"
+  end
+
+  def sti_dashboard_course_lesson_path
+    send "dashboard_#{type.underscore}_lessons_path"
+  end
+
   def course
-    @course ||= Course.find(params[:course_id])
+    @course ||=  Course.find(params["#{type.underscore}_id".to_sym])
   end
   helper_method :course
 
@@ -68,6 +76,6 @@ class Dashboard::LessonsController < Dashboard::BaseController
 
   def lesson_params
     params.require(:lesson).permit(:title, :description, :conspectus, :tell_homework,
-     :image, :video, :draft, :priority)
+     :image, :video, :draft, :priority, :start_date)
   end
 end

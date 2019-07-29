@@ -1,0 +1,24 @@
+%table.table.table-sm.table-inverse
+  %tbody
+    %tr.table-active
+      %th{:colspan => "3"}= course.type
+    %tr
+      %th= course.name
+      %th
+        - if user_signed_in?
+          - if !current_user.not_participate_in_course?(course) || !course.user_not_participant?(current_user)
+            = link_to t(".participate"), dashboard_participated_courses_path(course_id: course.id), method: :post
+          - else
+            = link_to t(".unparticipate"), dashboard_participated_course_path(course), method: :delete
+      %th= link_to t(".participants"), course_course_participants_path(course)
+    %tr
+      %td{:rowspan => "5"}= image_tag course.image.thumb.url
+      %td #{t('.video')}
+      %td= course.number_hours_video
+    %tr
+      %td #{t('.status')}
+      %td
+        - if current_user.not_participate_in_course?(course) && course.user_not_participant?(current_user)
+          = link_to t('.open'), course_lessons_path(course)
+        - else
+          #{t('.closed')}

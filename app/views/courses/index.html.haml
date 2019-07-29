@@ -1,7 +1,11 @@
-= link_to t(".back"),  dashboard_courses_path, class: 'btn btn-success'
+= link_to t(".back"), dashboard_courses_path, class: 'btn btn-success'
 %h1 #{t(".text")}
-.courses
-  = render @courses
+
+- @courses.each do |course|
+  %div{class: "course-#{course.id}"}
+    = render "#{course.type.underscore}", course: course
+
 %br/
 %br/
 = paginate @courses
+

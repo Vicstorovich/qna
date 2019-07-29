@@ -1,20 +1,48 @@
 ru:
 
+  homeworks:
+    create:
+      create: "Ваша домашняя работа успешно создана."
+
   dashboard:
+    profiles:
+      update:
+        update: "Профиль был успешно обновлен."
+    participated_courses:
+      create:
+        help: "Вы исключены из курса !!!"
+      destroy:
+        off: "Вы отписались от курса !!!"
     courses:
+      create:
+        create: "Ваш курс успешно создан."
+      update:
+        update: "Курс был успешно обновлен."
+      destroy:
+        destroy: "Курс был успешно удален"
       show:
         back: "Назад"
-        text1: "Участник"
-        text2: "Не участвует"
-        text3: "Участники курса %{name}"
+        on: "Участник"
+        of: "Не участвует"
+        name: "Участники курса %{name}"
         deduct_html: "<span style='color: red'> Отчислить </span>"
         enroll_html: "<span style='color: green'> Зачислить </span>"
       new:
         back: "Назад"
         text: "Новый курс"
       index:
+        new_course: "Новый Записанный Курс"
+        new_intense: "Новые Записанный Интенсивный"
+        new_online: "Новый Онлайн Интенсивный"
         text: "Курсы"
-        new: "Новый курс"
+        name: "Название"
+        type: "Тип"
+        image: "Изображение"
+        participants: "Участники"
+        confirm: 'Вы уверены?'
+        edit: "редактировать"
+        delete: "удалить"
+        users: "Участники"
       edit:
         back: "Назад"
         edit: "Редактирование"
@@ -49,6 +77,8 @@ ru:
         text: "Редактирование порядка отображения уроков"
         submit: "Обновить порядок"
     homeworks:
+      destroy:
+        delete: "домашнее задание было успешно удалено"
       index:
         text: "Выбор урока"
         back: "Назад"
@@ -67,10 +97,34 @@ ru:
       jonet: "участвует с"
 
   courses:
-    course:
+    online_intense:
       participants: "Участники"
-      participate: "Принять участие"
-      unparticipate: "Отказаться от курса"
+      participate: "Подписаться"
+      unparticipate: "Отписаться"
+      start: "начало курса"
+      stop: "конец курса"
+      video: "колличество часов видео"
+      practic: "колличество часов практики"
+      status: "статус курса"
+      open: 'Открыто'
+      closed: 'Закрыто'
+    recorded_course:
+      participants: "Участники"
+      participate: "Подписаться"
+      unparticipate: Отписаться"
+      video: "колличество часов видео"
+      status: "статус курса"
+      open: 'Открыто'
+      closed: 'Закрыто'
+    recorded_intense:
+      participants: "Участники"
+      participate: "Подписаться"
+      unparticipate: "Отписаться"
+      video: "колличество часов видео"
+      practic: "колличество часов практики"
+      status: "статус курса"
+      open: 'Открыто'
+      closed: 'Закрыто'
     index:
       back: "Назад"
       text: "Курсы"
@@ -83,6 +137,19 @@ ru:
       back: "Назад"
     index:
       text: "Занятия"
+
+  passwords:
+    create:
+      error: "Пользователь не найден!"
+    create:
+      text: "Восстановление пароля"
+      send: "Инструкция по восстановлению была отправлена"
+    edit:
+      text: "Восстановление пароля"
+      submit: "Сброс пароля"
+    new:
+      text: "Восстановление пароля"
+      submit: "Отправить инструкции по восстановлению "
 
   helpers:
     submit:
@@ -122,5 +189,6 @@ ru:
       notice: "Вы вышли из системы"
     new:
       submit: "Войти"
+      link: "Забытый пароль"
 
 

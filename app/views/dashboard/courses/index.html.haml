@@ -1,8 +1,30 @@
-= link_to t(".new"), new_dashboard_course_path
+= link_to t('.new_course'), sti_course_path('RecordedCourse', nil, :new)
+|
+= link_to t(".new_intense"), sti_course_path('RecordedIntense', nil, :new)
+|
+= link_to t('.new_online'), sti_course_path('OnlineIntense', nil, :new)
 
 %h1 #{t(".text")}
+
 .courses
-  = render @courses
+  %table.table.table-sm.table-inverse
+    %thead
+      %tr
+        %th #{t(".name")}
+        %th #{t(".type")}
+        %th #{t(".image")}
+        %th
+        %th
+        %th #{t(".participants")}
+    %tbody
+      - @courses.each do |course|
+        %tr
+          %td= link_to course.name, dashboard_course_lessons_path(course)
+          %td= course.type
+          %td= image_tag course.image.thumb.url
+          %td= link_to t('.edit'), sti_course_path(course.type, course, :edit)
+          %td= link_to t('.delete'), sti_courses_path(course.type, course), method: :delete, data: { confirm: t(".confirm") }
+          %td= link_to t(".users"), dashboard_course_path(course)
 %br/
 %br/
 = paginate @courses

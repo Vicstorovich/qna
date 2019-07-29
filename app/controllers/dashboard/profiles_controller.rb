@@ -3,7 +3,7 @@ class Dashboard::ProfilesController < Dashboard::BaseController
 
   def update
     if current_user.update(user_params)
-      flash[:notice] = "The profile was updated successfully."
+      flash[:notice] = t(".update")
       redirect_to dashboard_courses_path
     else
       render :edit

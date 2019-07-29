@@ -16,7 +16,7 @@ class Dashboard::HomeworksController < Dashboard::BaseController
   def destroy
     homework.destroy
 
-    flash[:notice] = "homework was successfully deleted"
+    flash[:notice] = t(".delete")
     redirect_to dashboard_course_homeworks_path(course)
   end
 

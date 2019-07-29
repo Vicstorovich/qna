@@ -1,20 +1,49 @@
 en:
 
+  homeworks:
+    create:
+      create: "Your homework successfully created."
+
   dashboard:
+    profiles:
+      update:
+        update: "The profile was updated successfully."
+    participated_courses:
+      create:
+        help: "You are expelled from the course !!!"
+      destroy:
+        off: "You unsubscribed from the course !!!"
     courses:
+      create:
+        create: "Your course successfully created."
+      update:
+        update: "The course was updated successfully."
+      destroy:
+        destroy: "Course was successfully deleted"
       show:
         back: "Back"
-        text1: "Participant"
-        text2: "Not a participant "
-        text3: "Course participants %{name}"
+        on: "Participant"
+        of: "Not a participant "
+        name: "Course participants %{name}"
         deduct_html: '<span style="color: red"> Deduct </span>'
         enroll_html: "<span style='color: green'> Enroll </span>"
       new:
         back: "Back"
         text: "New Course"
       index:
-        new: "New course"
+        new_course: "New RecordedCourse"
+        new_intense: "New RecordedIntense"
+        new_online: "New OnlineIntense"
         text: "Courses"
+        name: "Name"
+        type: "Type"
+        image: "Image"
+        participants: "Participants "
+        confirm: 'Are you sure?'
+        edit: "Edit"
+        delete: "Destroy"
+        users: "Participants"
+
       edit:
         back: "Back"
         edit: "Edit"
@@ -49,6 +78,8 @@ en:
         text: "Edit order"
         submit: "Update order"
     homeworks:
+      destroy:
+        delete: "homework was successfully deleted"
       index:
         text: "Select lesson"
         back: "Back"
@@ -68,10 +99,34 @@ en:
       jonet: "joined at"
 
   courses:
-    course:
+    online_intense:
       participants: "Participants"
       participate: "Participate"
       unparticipate: "Unparticipate"
+      start: "course start date"
+      stop: "course end date"
+      video: "number hours video"
+      practic: "number hours video"
+      status: "status course"
+      open: 'Open'
+      closed: 'Closed'
+    recorded_course:
+      participants: "Participants"
+      participate: "Participate"
+      unparticipate: "Unparticipate"
+      video: "number hours video"
+      status: "status course"
+      open: 'Open'
+      closed: 'Closed'
+    recorded_intense:
+      participants: "Participants"
+      participate: "Participate"
+      unparticipate: "Unparticipate"
+      video: "number hours video"
+      practic: "number hours video"
+      status: "status course"
+      open: 'Open'
+      closed: 'Closed'
     index:
       back: "Back"
       text: "Courses"
@@ -94,6 +149,19 @@ en:
       label:
         priority: "Priority"
         draft: "Draft"
+
+  passwords:
+    create:
+      error: "User not found!"
+    create:
+      text: "Password recovery"
+      send: "Recovery instruction was send to"
+    edit:
+      text: "Password recovery"
+      submit: "Reset password"
+    new:
+      text: "Password recovery"
+      submit: "Send recovery instructions"
 
 
   appointment:
@@ -121,6 +189,7 @@ en:
       notice_no: "Invalid Email or password."
     new:
       submit: "Log in"
+      link: "Forgot password"
     destroy:
       notice: "Signed out successfully."
 

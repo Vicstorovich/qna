@@ -1,4 +1,3 @@
----
 ru:
   activerecord:
     models:
@@ -28,6 +27,10 @@ ru:
         course:
           name: "название"
           image: 'изображение'
+          number_hours_video: "кол.часов видео"
+          number_hours_practice: "кол.часов практики"
+          course_start_date: "старт курса"
+          course_end_date: "конец курса"
         homework:
           body: "тело"
         lesson:
@@ -39,6 +42,7 @@ ru:
           draft: "черновик"
           image: "изображение"
           video: "видео"
+          start_date: "дата включения"
         profiles:
           name: "имя"
           avatar: "аватар"
