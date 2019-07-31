@@ -14,15 +14,15 @@ Rails.application.routes.draw do
       resource :profiles, only: %i[edit update]
       resources :participated_courses, only: %i[index create destroy]
 
-      resources :recorded_courses, controller: 'courses', type: 'RecordedCourse' do
+      resources :recorded_courses, type: 'RecordedCourse' do
         resources :lessons
       end
 
-      resources :recorded_intenses, controller: 'courses', type: 'RecordedIntense' do
+      resources :recorded_intenses, type: 'RecordedIntense' do
         resources :lessons
       end
 
-      resources :online_intenses, controller: 'courses', type: 'OnlineIntense' do
+      resources :online_intenses, type: 'OnlineIntense' do
         resources :lessons
       end
 

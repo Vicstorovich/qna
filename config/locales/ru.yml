@@ -13,11 +13,22 @@ ru:
         help: "Вы исключены из курса !!!"
       destroy:
         off: "Вы отписались от курса !!!"
-    courses:
+    recorded_intenses:
       create:
         create: "Ваш курс успешно создан."
       update:
         update: "Курс был успешно обновлен."
+    recorded_courses:
+      create:
+        create: "Ваш курс успешно создан."
+      update:
+        update: "Курс был успешно обновлен."
+    online_intenses:
+      create:
+        create: "Ваш курс успешно создан."
+      update:
+        update: "Курс был успешно обновлен."
+    courses:
       destroy:
         destroy: "Курс был успешно удален"
       show:

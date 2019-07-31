@@ -20,6 +20,10 @@ class Course < ApplicationRecord
     course_users.find_by(user_id: user.id).pupil if user.not_participate_in_course?(self)
   end
 
+  # def user_participant_course?(course, user)
+  #   course.user_not_participant?(user) && !course.user_not_participant?(user).nil?
+  # end
+
   def self.types
     %w(OnlineIntense RecordedIntense RecordedCourse)
   end
@@ -33,4 +37,8 @@ class Course < ApplicationRecord
   def homeworks_user(user)
     homeworks.where(user_id: user.id)
   end
+
+  # def lesson_access(user)
+
+  # end
 end

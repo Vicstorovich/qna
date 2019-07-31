@@ -1,10 +1,18 @@
 class LessonsController < ApplicationController
   def index
-    @lessons = course.lessons.not_draft.page(params[:page]).per(5)
+    if course.user_not_participant?(current_user)
+      @lessons = course.lessons.not_draft.page(params[:page]).per(5)
+    else
+      render file: "public/422.html"
+    end
   end
 
   def show
-    @lesson = course.lessons.find(params[:id])
+    if course.user_not_participant?(current_user)
+      @lesson = course.lessons.find(params[:id])
+    else
+      render file: "public/422.html"
+    end
   end
 
   private

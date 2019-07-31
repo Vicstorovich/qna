@@ -11,4 +11,8 @@ class CourseUser < ApplicationRecord
   def subscribe
     update(pupil: true)
   end
+
+  def self.testic(var)
+    find_by("#{var}_id".to_sym var.id)
+  end
 end
