@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
   end
 
   def show
-    if course.user_not_participant?(current_user)
+    if course.lesson_available?(lesson, current_user)
       @lesson = course.lessons.find(params[:id])
     else
       render file: "public/422.html"
@@ -16,6 +16,11 @@ class LessonsController < ApplicationController
   end
 
   private
+
+  def lesson
+    @lesson ||= course.lessons.find(params[:id])
+  end
+  helper_method :lesson
 
   def course
     @course ||= Course.find(params[:course_id])

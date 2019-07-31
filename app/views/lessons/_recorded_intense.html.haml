@@ -1,4 +1,4 @@
-- if lesson_one?(course, lesson) || lesson.homeworks.exists? || another_lesson?(course, lesson, current_user)
+%div{class: "lesson-#{lesson.id}"}
   %ul
     %li{:class => "#{cycle('lesson-odd', 'lesson-even')}"}
       %p

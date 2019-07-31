@@ -17,7 +17,7 @@ class Course < ApplicationRecord
   mount_uploader :image, CourseImageUploader
 
   def user_not_participant?(user)
-    course_users.find_by(user_id: user.id).pupil if user.not_participate_in_course?(self)
+    user.not_participate_in_course?(self) ? course_users.find_by(user_id: user.id).pupil : false
   end
 
   def self.types
@@ -32,5 +32,9 @@ class Course < ApplicationRecord
 
   def homeworks_user(user)
     homeworks.where(user_id: user.id)
+  end
+
+  def lesson_available?(_lesson, user)
+    user_not_participant?(user)
   end
 end

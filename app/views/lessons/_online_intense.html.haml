@@ -1,6 +1,5 @@
-- if course.course_start_date < lesson.start_date && course.course_end_date > lesson.start_date
+%div{class: "lesson-#{lesson.id}"}
   %ul
     %li{:class => "#{cycle('lesson-odd', 'lesson-even')}"}
       %p
         = link_to lesson.title, course_lesson_path(course,lesson)
-        = lesson.start_date
