@@ -13,11 +13,22 @@ en:
         help: "You are expelled from the course !!!"
       destroy:
         off: "You unsubscribed from the course !!!"
-    courses:
+    recorded_courses:
       create:
         create: "Your course successfully created."
       update:
         update: "The course was updated successfully."
+    recorded_intenses:
+      create:
+        create: "Your course successfully created."
+      update:
+        update: "The course was updated successfully."
+    online_intenses:
+      create:
+        create: "Your course successfully created."
+      update:
+        update: "The course was updated successfully."
+    courses:
       destroy:
         destroy: "Course was successfully deleted"
       show:
