@@ -34,7 +34,7 @@ class Course < ApplicationRecord
     homeworks.where(user_id: user.id)
   end
 
-  def lesson_available?(_lesson, user)
+  def lesson_available_user?(_lesson, user)
     user_not_participant?(user)
   end
 end

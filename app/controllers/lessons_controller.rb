@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
   end
 
   def show
-    if course.lesson_available?(lesson, current_user)
+    if course.lesson_available_user?(lesson, current_user)
       @lesson = course.lessons.find(params[:id])
     else
       render file: "public/422.html"

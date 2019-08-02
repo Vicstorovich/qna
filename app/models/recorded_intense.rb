@@ -12,7 +12,7 @@ class RecordedIntense < Course
     end
   end
 
-  def lesson_available?(lesson, user)
+  def lesson_available_user?(lesson, user)
     lesson_one?(lesson) || another_lesson?(lesson, user) || lesson.homeworks.exists?
   end
 end
