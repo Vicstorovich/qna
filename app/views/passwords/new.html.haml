@@ -1,8 +1,0 @@
-%h1 #{ t('.text') }
-
-= form_tag passwords_path, method: :post do
-  = text_field_tag :email
-  - if @error.present?
-    = @error
-
-  = submit_tag t(".submit")

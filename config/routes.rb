@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  scope "(:lang)", lang: /en|ru/ do
-    root to: 'appointment#index'
+  root to: 'appointment#index'
+    devise_for :users, controllers: { registrations: 'users/registrations' }
 
     resources :courses, only: %i[index] do
       resources :course_participants, only: %i[index], path: "participants"
@@ -29,22 +29,15 @@ Rails.application.routes.draw do
       resources :courses do
         resources :lessons do
          collection do
-            post :edit_order
-            put :update_order
-          end
-        end
-        resources :homeworks, only: %i[index destroy]
-        resources :course_users, except: %i[index show new edit create update destroy] do
-          get 'not_pupil', on: :member
-          get 'pupil', on: :member
+          post :edit_order
+          put :update_order
         end
       end
+      resources :homeworks, only: %i[index destroy]
+      resources :course_users, except: %i[index show new edit create update destroy] do
+        get 'not_pupil', on: :member
+        get 'pupil', on: :member
+      end
     end
-
-    get :signup, to: "registrations#new"
-    get :login, to: "sessions#new"
-    resource :registrations, only: %i[create]
-    resource :sessions, only: %i[create destroy]
-    resource :passwords, only: [:new, :create, :edit, :update]
   end
 end

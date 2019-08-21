@@ -36,6 +36,9 @@ gem 'email_validator'
 gem "cocoon"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails-i18n'
+gem 'devise'
+gem 'rolify'
+gem 'cancancan'
 # gem "subdomain_locale"
 
 group :development, :test do
