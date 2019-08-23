@@ -1,16 +1,19 @@
 
 %nav.navbar.navbar-light.bg-dark
   %span.navbar-brand.mb-0.h1
-    / - if I18n.locale == I18n.default_locale
-    /   / = link_to 'En', { lang: :en }
-    /   = link_to("Ru", "http://ru.localizer.com:3000#{request.env['PATH_INFO']}")
-    / - else
-    /   / = link_to 'Ru', { lang: :ru }
-    /   = link_to("En", "http://en.localizer.com:3000#{request.env['PATH_INFO']}")
+    = link_to 'Admin', new_admin_session_path
+  %ul.nav.justify-content-end
+    - if admin_signed_in?
+      %li.nav-item
+        %a.nav-link
+        |
+      %li.nav-item
+        %a.nav-link= link_to 'courses', dashboard_courses_path
+        |
+      %li.nav-item
+        %a.nav-link= link_to "выйти",  destroy_admin_session_path, method: :delete
   %span.navbar-brand.mb-0.h1
-    / - if user_signed_in?
-    /   - if current_user.admin_status?
-    /     = link_to t('.adminpanel')
+
   %ul.nav.justify-content-end
     - if user_signed_in?
       %li.nav-item

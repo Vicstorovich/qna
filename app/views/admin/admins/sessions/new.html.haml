@@ -1,0 +1,21 @@
+.row
+  .col-md-ofset4.col-md-4
+    %h3 Login Admin
+    %hr
+
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" } do |f|
+      = f.error_notification
+      = f.input :email,
+        required: true,
+        autofocus: true,
+        input_html: { autocomplete: "email" }
+      = f.input :password,
+        required: true,
+        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+        input_html: { autocomplete: "new-password" }
+      = f.input :remember_me, as: :boolean
+
+      .form-actions
+        = f.button :submit, "Sign up", class: 'btn btn-success'
+    = render "devise/shared/links"
+

@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     if course.user_not_participant?(current_user)
       @lessons = course.lessons.not_draft.page(params[:page]).per(5)
