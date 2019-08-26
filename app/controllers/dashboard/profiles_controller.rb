@@ -1,10 +1,24 @@
 class Dashboard::ProfilesController < Dashboard::BaseController
+  skip_before_action :verify_mentor
+  authorize_resource
+
   def edit; end
 
   def update
-    if current_user.update(user_params)
+    if user_params[:password].present?
+      succes = current_user.update(user_params)
+    else
+      succes = current_user.update_without_password(user_params)
+    end
+
+    if succes
+      sign_in current_user, bypass: true
       flash[:notice] = t(".update")
-      redirect_to dashboard_courses_path
+      if current_user.has_role?(:mentor)
+        redirect_to dashboard_courses_path
+      else
+        redirect_to courses_path
+      end
     else
       render :edit
     end

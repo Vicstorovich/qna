@@ -1,23 +1,17 @@
 
 %nav.navbar.navbar-light.bg-dark
   %span.navbar-brand.mb-0.h1
-    = link_to 'Admin', new_admin_session_path
-  %ul.nav.justify-content-end
     - if admin_signed_in?
-      %li.nav-item
-        %a.nav-link
-        |
-      %li.nav-item
-        %a.nav-link= link_to 'courses', dashboard_courses_path
-        |
-      %li.nav-item
-        %a.nav-link= link_to "выйти",  destroy_admin_session_path, method: :delete
-  %span.navbar-brand.mb-0.h1
+      = link_to "Log out Admin",  destroy_admin_session_path, method: :delete
+    - else
+      = link_to 'Log in Admin', new_admin_session_path
+  %ul.nav.justify-content-end
 
   %ul.nav.justify-content-end
     - if user_signed_in?
       %li.nav-item
-        %a.nav-link= link_to "Signed in as #{ current_user.profile.name }"
+        %a.nav-link= link_to t(".logged", name: current_user.profile.name)
+        |
         |
       %li.nav-item
         %a.nav-link= link_to t(".edit_profile"), edit_dashboard_profiles_path
@@ -27,15 +21,20 @@
         |
       %li.nav-item
         %a.nav-link= link_to t(".courses"), courses_path
+        |
+      - if current_user.has_role?(:mentor)
+        %li.nav-item
+          %a.nav-link= link_to t(".courses_dashboard"), dashboard_courses_path
     - else
       %li.nav-item
         %a.nav-link= link_to t(".sig_in"), new_user_registration_path
         | 
       %li.nav-item
         %a.nav-link= link_to t(".log_in"), new_user_session_path
-      
+        |      
     %li.nav-item
       %a.nav-link.disabled
+      |
       - if I18n.locale == I18n.default_locale
         = link_to 'Ru', { lang: :ru }
       - else

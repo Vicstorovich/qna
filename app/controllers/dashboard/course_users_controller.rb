@@ -1,4 +1,6 @@
 class Dashboard::CourseUsersController < Dashboard::BaseController
+  authorize_resource
+
   def not_pupil
     course_user.unsubscribe
 

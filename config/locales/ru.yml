@@ -10,9 +10,10 @@ ru:
         update: "Профиль был успешно обновлен."
     participated_courses:
       create:
+        subscribed: "Вы подписались на курс !!!"
         help: "Вы исключены из курса !!!"
       destroy:
-        off: "Вы отписались от курса !!!"
+        unsubscribed: "Вы отписались от курса !!!"
     recorded_intenses:
       create:
         create: "Ваш курс успешно создан."
@@ -29,6 +30,10 @@ ru:
       update:
         update: "Курс был успешно обновлен."
     courses:
+      create:
+        create: "Ваш курс успешно создан."
+      update:
+        update: "Курс был успешно обновлен."
       destroy:
         destroy: "Курс был успешно удален"
       show:
@@ -184,6 +189,8 @@ ru:
       log_in: "Войти"
       sig_in: "Регистрация"
       courses: "Пройти курсы"
+      courses_dashboard: "Мои курсы"
+      logged: "Вы вошли как %{name}"
 
   registrations:
     create:

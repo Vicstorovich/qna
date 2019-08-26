@@ -10,9 +10,10 @@ en:
         update: "The profile was updated successfully."
     participated_courses:
       create:
+        subscribed: "You signed up for the course !!!"
         help: "You are expelled from the course !!!"
       destroy:
-        off: "You unsubscribed from the course !!!"
+        unsubscribed: "You unsubscribed from the course !!!"
     recorded_courses:
       create:
         create: "Your course successfully created."
@@ -29,6 +30,10 @@ en:
       update:
         update: "The course was updated successfully."
     courses:
+      update:
+        update: "The course was updated successfully."
+      create:
+        create: "Your course successfully created."
       destroy:
         destroy: "Course was successfully deleted"
       show:
@@ -139,7 +144,7 @@ en:
       open: 'Open'
       closed: 'Closed'
     index:
-      back: "Back"
+      back: "Dashboard"
       text: "Courses"
 
   lessons:
@@ -186,6 +191,8 @@ en:
       log_in: "Log in"
       sig_in: "Sig in"
       courses: "All courses"
+      courses_dashboard: "My courses"
+      logged: "You are logged in as %{name}"
 
   registrations:
     create:

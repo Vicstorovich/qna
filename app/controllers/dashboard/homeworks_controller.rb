@@ -1,4 +1,6 @@
 class Dashboard::HomeworksController < Dashboard::BaseController
+  load_and_authorize_resource
+
   def index
     @lessons = course.lessons.all
 
@@ -14,6 +16,7 @@ class Dashboard::HomeworksController < Dashboard::BaseController
   end
 
   def destroy
+    # authorize! :destroy, @homework
     homework.destroy
 
     flash[:notice] = t(".delete")

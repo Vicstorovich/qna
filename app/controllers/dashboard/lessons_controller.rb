@@ -1,16 +1,15 @@
 class Dashboard::LessonsController < Dashboard::BaseController
+  before_action :lesson_build, only: [:new, :create]
+  before_action :course
+  load_and_authorize_resource
+
   def index
     @lessons = course.lessons.page(params[:page]).per(5)
   end
 
-  def new
-    @lesson = course.lessons.build
-  end
+  def new; end
 
   def create
-    @lesson = course.lessons.build
-    @lesson.assign_attributes(lesson_params)
-
     if @lesson.save
       flash[:notice] = t(".notice_new")
       redirect_to sti_dashboard_course_lesson_path
@@ -77,5 +76,9 @@ class Dashboard::LessonsController < Dashboard::BaseController
   def lesson_params
     params.require(:lesson).permit(:title, :description, :conspectus, :tell_homework,
      :image, :video, :draft, :priority, :start_date)
+  end
+
+  def lesson_build
+    @lesson = params[:lesson].present? ? course.lessons.build(lesson_params) : course.lessons.build
   end
 end

@@ -67,6 +67,7 @@ group :development do
   gem "rack-livereload"
   gem 'rails_real_favicon'
   gem 'router-visualizer'
+  gem "ruby_warning_filter", "~> 1.0.0"
 end
 
 group :test do

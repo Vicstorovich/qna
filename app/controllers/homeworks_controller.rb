@@ -1,6 +1,8 @@
 class HomeworksController < ApplicationController
   before_action :authenticate_user!
 
+  authorize_resource
+
   def create
     @homework = lesson.homeworks.build
     @homework.user = current_user
