@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_21_092730) do
+ActiveRecord::Schema.define(version: 2019_08_26_141435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_092730) do
     t.boolean "draft", default: false, null: false
     t.integer "priority", default: 0, null: false
     t.date "start_date"
+    t.string "share_key"
   end
 
   create_table "profiles", force: :cascade do |t|

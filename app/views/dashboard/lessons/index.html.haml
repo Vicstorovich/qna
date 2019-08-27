@@ -12,6 +12,11 @@
           - if lesson.draft?
             %p The lesson is in drafts
           = link_to lesson.title, dashboard_course_lesson_path(course, lesson)
+          - if lesson.share_key.present?
+            = lesson.share_key
+          - else
+            - if can? :share_lesson, lesson
+              = link_to "Share", dashboard_course_lesson_shares_path(course, lesson), method: :post
           = link_to t(".edit"), edit_dashboard_course_lesson_path(course, lesson)
           = link_to t(".delete"), dashboard_course_lesson_path(course, lesson), method: :delete, data: { confirm: "Are you sure?" }
 

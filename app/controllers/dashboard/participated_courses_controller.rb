@@ -1,5 +1,6 @@
 class Dashboard::ParticipatedCoursesController < Dashboard::BaseController
   skip_before_action :verify_mentor
+
   load_and_authorize_resource class: Course
 
   def index

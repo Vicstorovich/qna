@@ -1,6 +1,7 @@
 class Dashboard::CoursesController < Dashboard::BaseController
   before_action :build_course, only: [:new, :create]
   before_action :course, only: [:update, :destroy, :edit]
+
   load_and_authorize_resource
 
   def index

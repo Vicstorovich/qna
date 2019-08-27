@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     { lang: (I18n.locale == I18n.default_locale ? nil : I18n.locale) }
   end
 
+  def current_ability
+    @current_ability = Ability.new(current_user, params[:share_key])
+  end
+
   protected
 
   def set_locale

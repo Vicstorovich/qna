@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
     resources :courses do
       resources :lessons do
+        resources :shares, only: [:create], controller: :lesson_shares
         collection do
           post :edit_order
           put :update_order
