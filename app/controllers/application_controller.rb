@@ -1,11 +1,18 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: ENV.fetch('ADMIN_LOGIN'), password: ENV.fetch('ADMIN_PASSWORD')  if ENV['PROTECT_WITH_HTTP_BASIC'].present?
+  def self. my_http_basic_authenticate_with(login, password)
+    return unless ENV['PROTECT_WITH_HTTP_BASIC'].present?
+    http_basic_authenticate_with name: login, password: password
+  end
+
+  my_http_basic_authenticate_with(ENV.fetch('ADMIN_LOGIN'), ENV.fetch('ADMIN_PASSWORD'))
 
   check_authorization unless: :devise_controller?
 
   before_action :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
+    Rails.logger.debug "Отказано в доступе на #{exception.action} #{exception.subject.inspect}"
+
     respond_to do |format|
       format.html { redirect_to root_path, alert: exception.message }
       format.json { render json: exception.message, status: :forbidden }
@@ -18,7 +25,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    @current_ability = Ability.new(current_user, params[:share_key])
+    controller_name_segments = params[:controller].split('/')
+    controller_name_segments.pop
+    controller_namespace = controller_name_segments.join('/').camelize
+
+    @current_ability = Ability.new(current_user, params[:share_key], controller_namespace)
   end
 
   protected

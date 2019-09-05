@@ -1,7 +1,5 @@
 class Dashboard::ProfilesController < Dashboard::BaseController
-  skip_before_action :verify_mentor
-
-  authorize_resource
+  skip_authorization_check
 
   def edit; end
 

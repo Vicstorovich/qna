@@ -1,7 +1,9 @@
+= link_to t(".back"), courses_path
 %h1 #{t(".text")} "#{course.type}"
 .lessons
-  - @lessons.each do |lesson|
-    = render "#{lesson.course.type.underscore}", lesson: lesson
+  - if can? :read, Lesson
+    - @lessons.each do |lesson|
+      = render "#{lesson.course.type.underscore}", lesson: lesson
 %br/
 %br/
 = paginate @lessons

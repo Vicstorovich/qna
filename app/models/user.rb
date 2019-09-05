@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def expelled_from_course?(course)
-    course_users.find_by(course_id: course.id).pupil
+    course_users.find_by(course_id: course.id).pupil if course.course_users.where(user: self).any?
   end
 
   def author_course?(course)

@@ -33,4 +33,5 @@
 /.rspec
 /.vscode
 /.env
+.env
 /.env.test

@@ -1,7 +1,5 @@
 class Dashboard::ParticipatedCoursesController < Dashboard::BaseController
-  skip_before_action :verify_mentor
-
-  load_and_authorize_resource class: Course
+  skip_authorization_check
 
   def index
     @courses = current_user.participated_courses

@@ -5,14 +5,15 @@
     %tr
       %th= course.name
       %th
-        - if user_signed_in?
-          - if !current_user.not_participate_in_course?(course) || !course.user_not_participant?(current_user)
-            = link_to t(".participate"), dashboard_participated_courses_path(course_id: course.id), method: :post
-          - else
+        - if can? :opportunity_participate_course, course
+          = link_to t(".participate"), dashboard_participated_courses_path(course_id: course.id), method: :post
+        - else
+          - if current_user.present?
             = link_to t(".unparticipate"), dashboard_participated_course_path(course), method: :delete
       %th
-        - if user_signed_in?
-          = link_to t(".participants"), course_course_participants_path(course)
+        - if can? :read, course
+          - if current_user.present?
+            = link_to t(".participants"), course_course_participants_path(course)
     %tr
       %td{:rowspan => "5"}= image_tag course.image.thumb.url
       %td #{t('.video')}
@@ -20,8 +21,7 @@
     %tr
       %td #{t('.status')}
       %td
-        - if user_signed_in?
-          - if current_user.not_participate_in_course?(course) && course.user_not_participant?(current_user)
-            = link_to t('.open'), course_lessons_path(course)
-          - else
-            #{t('.closed')}
+        - if can? :learning_lessons_course, course
+          = link_to t('.open'), course_lessons_path(course)
+        - else
+          #{t('.closed')}
