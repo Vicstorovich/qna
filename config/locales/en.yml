@@ -19,16 +19,22 @@ en:
         create: "Your course successfully created."
       update:
         update: "The course was updated successfully."
+      destroy:
+        destroy: "Course was successfully deleted"
     recorded_intenses:
       create:
         create: "Your course successfully created."
       update:
         update: "The course was updated successfully."
+      destroy:
+        destroy: "Course was successfully deleted"
     online_intenses:
       create:
         create: "Your course successfully created."
       update:
         update: "The course was updated successfully."
+      destroy:
+        destroy: "Course was successfully deleted"
     courses:
       update:
         update: "The course was updated successfully."
@@ -186,9 +192,9 @@ en:
 
   shared:
     menu:
-      edit_profile: "Edit profile"
-      log_out: "Log out"
-      log_in: "Log in"
+      edit_profile: "Modify profile"
+      log_out: "Logout"
+      log_in: "Login"
       sig_in: "Sig in"
       courses: "All courses"
       courses_dashboard: "My courses"

@@ -23,6 +23,13 @@ class Dashboard::RecordedCoursesController < Dashboard::CoursesController
     end
   end
 
+  def destroy
+    course.destroy
+
+    flash[:notice] = t(".destroy")
+    redirect_to dashboard_courses_path
+  end
+
   private
 
   def course_params

@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    visualize
     resource :profiles, only: %i[edit update]
     resources :participated_courses, only: %i[index create destroy]
 

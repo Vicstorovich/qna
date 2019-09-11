@@ -2,9 +2,11 @@ require "rails_helper"
 
 RSpec.describe CoursesController, type: :controller do
   let(:user) { create :user }
+  let(:user_mentor) { create :user }
 
   describe "GET #index" do
-    let(:courses) { create_list(:course, 2, user: user)  }
+    before { log_in(user) }
+    let(:courses) { create_list(:course, 2, user: user_mentor)  }
 
     before { get :index }
 

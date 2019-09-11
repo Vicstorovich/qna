@@ -79,6 +79,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'rspec-rails', '~>3.8'
+  gem 'launchy'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

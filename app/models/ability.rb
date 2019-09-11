@@ -10,15 +10,12 @@ class Ability
       share_key.present? && share_key == lesson.share_key
     end
 
-    case controller_namespace
-    when 'Dashboard'
-      mentor_abilities if user.has_role?(:mentor)
+    if controller_namespace == 'Dashboard' && user.present? && user.has_role?(:mentor)
+      mentor_abilities
+    elsif user.present? && user.has_role?(:user)
+      user_abilities
     else
-      if user.present? && user.has_role?(:user)
-        user_abilities
-      else
-        guest_abilities
-      end
+      guest_abilities
     end
   end
 
@@ -44,6 +41,8 @@ class Ability
     can :share_lesson, Lesson do |lesson|
       lesson.course.user == user
     end
+
+    can :update, Profile
   end
 
   def user_abilities
