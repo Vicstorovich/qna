@@ -62,7 +62,7 @@ RSpec.describe Dashboard::OnlineIntensesController, type: :controller do
 
       it "assigns the requested course to @course" do
         patch :update, params: { id: course, online_intense: attributes_for(:online_intense), type: 'OnlineIntense' }
-        expect(assigns(:course)).to eq course
+        expect(assigns(:online_intense)).to eq course
       end
 
       it "changes course attributes" do

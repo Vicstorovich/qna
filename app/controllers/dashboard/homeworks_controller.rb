@@ -16,7 +16,7 @@ class Dashboard::HomeworksController < Dashboard::BaseController
   end
 
   def destroy
-    # authorize! :destroy, @homework
+    authorize! :destroy, @homework
     homework.destroy
 
     flash[:notice] = t(".delete")

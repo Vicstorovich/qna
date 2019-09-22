@@ -17,7 +17,7 @@
         %th
         %th #{t(".participants")}
     %tbody
-      - @courses.each do |course|
+      - collection.each do |course|
         %tr
           %td= link_to course.name, dashboard_course_lessons_path(course)
           %td= course.type
@@ -27,4 +27,5 @@
           %td= link_to t(".users"), dashboard_course_path(course)
 %br/
 %br/
-= paginate @courses
+= paginate collection
+= collection.total_count

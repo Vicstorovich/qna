@@ -35,3 +35,5 @@
 /.env
 .env
 /.env.test
+/.traceroute.yaml.txt
+.traceroute.yaml.txt

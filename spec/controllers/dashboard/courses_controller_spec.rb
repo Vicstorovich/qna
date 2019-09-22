@@ -32,16 +32,16 @@ RSpec.describe Dashboard::CoursesController, type: :controller do
     end
   end
 
-  # describe "DELETE #destroy" do
-  #   let(:course) { create(:course, user: mentor) }
-  #   let(:delete_action) { delete :destroy, params: { id: course } }
+  describe "DELETE #destroy" do
+    let(:course) { create(:course, user: mentor) }
+    let(:delete_action) { delete :destroy, params: { id: course } }
 
-  #   context "if question belongs to the user" do
-  #     it "deletes course" do
-  #       expect { delete_action }.to change(Course, :count).by(-1)
-  #       expect(response).to redirect_to(dashboard_courses_path)
-  #       expect(flash[:notice]).to eq 'Course was successfully deleted'
-  #     end
-  #   end
-  # end
+    context "if question belongs to the user" do
+      it "deletes course" do
+        expect { delete_action }.to change(Course, :count).by(0)
+        expect(response).to redirect_to(dashboard_courses_path)
+        expect(flash[:notice]).to eq 'Course was successfully destroyed.'
+      end
+    end
+  end
 end

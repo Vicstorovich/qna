@@ -1,25 +1,26 @@
 class Dashboard::CoursesController < Dashboard::BaseController
+  include SimpleResource
+
+  responders :flash, :http_cache
+  resource_context :current_user
+  paginate_collection 5
+  add_actions :index, :create, :destroy
   authorize_resource
 
-  def index
-    @courses = current_user.courses.all.page(params[:page]).per(2)
-  end
-
   def show
-    @course_users = course.course_users
-  end
-
-  def destroy
-    course.destroy
-
-    flash[:notice] = t(".destroy")
-    redirect_to dashboard_courses_path
+    @course_users = resource.course_users
   end
 
   private
 
-  def course
-    @course ||= current_user.courses.find(params[:id])
+  def permitted_params
+    params.require(:course).permit(:type, :name, :image,
+     :number_hours_video, :number_hours_practice, :course_start_date,
+      :course_end_date,course_users_attributes: %i[id _destroy user_id],
+       lessons_attributes: %i[id title priority] )
   end
-  helper_method :course
+
+  def after_actions_redirect_pash
+     dashboard_courses_path
+  end
 end

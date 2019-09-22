@@ -28,7 +28,7 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
 
     before { get :show, params: { course_id: course, id: lesson } }
 
-    it 'should return collection of course participants' do
+    it 'should return lesson' do
       expect(response).to render_template(:show)
       expect(assigns(:lesson)).to eq lesson
     end
@@ -53,7 +53,7 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
         params: { course_id: course.id, lesson: attributes_for(:lesson) }
       end
 
-      it "saves a new course in the database" do
+      it "saves a new lesson in the database" do
         expect { action }.to change(Lesson, :count).by(1)
 
         action
@@ -67,7 +67,7 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
         params: { course_id: course.id, lesson: attributes_for(:lesson, title: nil) }
       end
 
-      it "does not save the course" do
+      it "does not save the lesson" do
         expect { action }.to_not change(Course, :count)
 
         action
@@ -93,12 +93,12 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
 
     context "with valid attributes" do
 
-      it "assigns the requested course to @course" do
+      it "assigns the requested lesson to @lesson" do
         patch :update, params: { course_id: course, id: lesson, lesson: attributes_for(:lesson) }
         expect(assigns(:lesson)).to eq lesson
       end
 
-      it "changes course attributes" do
+      it "changes lesson attributes" do
         expect(lesson.title).to eq "Lesson9"
         patch :update, params: { course_id: course.id, id: lesson, lesson: { title: "new name" } }
         lesson.reload
@@ -106,7 +106,7 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
         expect(lesson.title).to eq "new name"
       end
 
-      it "redirects to updated course" do
+      it "redirects to updated lesson" do
         patch :update, params: { course_id: course, id: lesson, lesson: attributes_for(:lesson) }
         expect(response).to redirect_to dashboard_course_lessons_path
       end
@@ -118,7 +118,7 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
         params: { course_id: course.id, id: lesson, lesson: { title: nil } }
       end
 
-      it "does not change course" do
+      it "does not change lesson" do
         expect(lesson.title).to eq "Lesson9"
         course.reload
 
@@ -134,7 +134,7 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
       delete :destroy, params: { course_id: course, id: lesson, lesson: attributes_for(:lesson) }
     end
 
-    context "if question belongs to the user" do
+    context "if lesson belongs to the couse" do
       it "deletes course" do
         expect { delete_action }.to change(Lesson, :count).by(0)
 

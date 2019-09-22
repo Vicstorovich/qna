@@ -39,7 +39,8 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'rolify'
 gem 'cancancan'
-# gem "subdomain_locale"
+gem 'has_scope'
+gem "responders"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

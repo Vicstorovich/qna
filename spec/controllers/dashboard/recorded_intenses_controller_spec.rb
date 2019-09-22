@@ -62,7 +62,7 @@ RSpec.describe Dashboard::RecordedIntensesController, type: :controller do
 
       it "assigns the requested course to @course" do
         patch :update, params: { id: course, recorded_intense: attributes_for(:recorded_intense), type: 'RecordedIntense' }
-        expect(assigns(:course)).to eq course
+        expect(assigns(:recorded_intense)).to eq course
       end
 
       it "changes course attributes" do
