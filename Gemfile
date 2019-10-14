@@ -17,6 +17,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'mini_racer', platforms: :ruby
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+gem 'mini_racer'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
@@ -29,7 +30,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick', '~> 4.8'
-gem 'bootstrap', '~> 4.3.1'
+# gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'redis-rails'
 gem 'email_validator'
