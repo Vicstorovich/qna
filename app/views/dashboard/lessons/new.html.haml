@@ -1,6 +1,31 @@
-= link_to t(".back"),  dashboard_courses_path, class: 'btn btn-success'
+%body
+  %header#head.secondary
+  / container
+  .container
+    %ol.breadcrumb
+      %li
+        = link_to "Back",  dashboard_course_lessons_path
+      %li.active New lesson page
+    .row
+      / Article main content
+      %article.col-sm-9.maincontent
+        %header.page-header
+          %h1.page-title Create lesson
 
-%h1 New lesson
-
-= render 'form', course: course, lesson: lesson
-
+        %br/
+        = render 'form', course: course, lesson: lesson
+      / /Article
+      / Sidebar
+      %aside.col-sm-3.sidebar.sidebar-right
+        .widget
+          %h4 Infomation
+          %address
+            %p#notice= notice
+            %p.alert= alert
+          %h4 Phone:
+          %address
+            (713) 791-1414
+      / /Sidebar
+  / /container
+%br/
+%br/

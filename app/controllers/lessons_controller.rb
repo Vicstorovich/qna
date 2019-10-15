@@ -1,11 +1,9 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!
 
-  has_scope :not_draft
-
   def index
     authorize! :access_to_course, course
-    @lessons = apply_scopes(Lesson).page(params[:page]).per(5)
+    @lessons = course.lessons.not_draft.page(params[:page]).per(5)
   end
 
   def show

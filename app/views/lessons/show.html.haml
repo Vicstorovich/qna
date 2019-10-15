@@ -1,16 +1,52 @@
-= link_to t(".back"), course_lessons_path, class: 'btn btn-success'
+%body
+  %header#head.secondary
+  / container
+  .container
+    %ol.breadcrumb
+      %li
+        = link_to t(".back"), course_lessons_path
+      %li.active Lesson page
+    .row
+      / Article main content
+      %article.col-sm-8.maincontent
+        %header.page-header
+          %h1.page-title Материалы урока
+        %h3= @lesson.title
+        %p= video_tag @lesson.video_url.to_s, :controls =>true
 
-%h1= @lesson.title
-%p= @lesson.description
-%p= @lesson.conspectus
-%p= image_tag @lesson.image.thumb.url
-%p= @lesson.tell_homework
-%p= video_tag @lesson.video_url.to_s, :controls =>true
+        %h3 #{t(".text")}
+        = view_homework_user_this_lesson(@lesson)
 
-%h3 #{t(".text")}
-= view_homework_user_this_lesson(@lesson)
+        = simple_form_for [@lesson, @lesson.homeworks.new], url: course_lesson_homeworks_path(course, @lesson), html: {method: :post} do |f|
+          .top-margin
+            = f.input :body, label: t(".response"), input_html: { class: "form-control" }
+          %hr/
+          .row
+            .col-lg-12.text-right
+              = f.submit t(".send"), class: "btn btn-action"
+          %hr/
+          %hr/
+          %hr/
+      %aside.col-sm-4.sidebar.sidebar-right
+        .widget
+          %h4 Описание
+          %ul.list-unstyled.list-spaces
+            %li
+              %a{:href => ""} Теория
+              %br/
+              %span.small.text-muted= @lesson.description
+            %li
+              %a{:href => ""} Файлы и ссылки
+              %br/
+              %span.small.text-muted= @lesson.conspectus
+            %li
+              %a{:href => ""} Enim, sequi dignissimos
+              %br/
+              %span.small.text-muted= image_tag @lesson.image.thumb.url
+            %li
+              %a{:href => ""} Домашние задание
+              %br/
+              %span.small.text-muted= @lesson.tell_homework
 
-= simple_form_for [@lesson, @lesson.homeworks.new], url: course_lesson_homeworks_path(course, @lesson), html: {method: :post} do |f|
-  = f.input :body, label: t(".response")
-
-  = f.submit t(".send")
+      / /Sidebar
+  / /container

@@ -1,8 +1,10 @@
-%div{class: "homework-#{homework.id}"}
-  %ul
-    %li
-      = link_to homework.body
+.row
+  .col-sm-6
+    = link_to homework.body
+  .col-sm-4
     %p
       #{t(".text")}
       = author_homework(homework)
+  .col-sm-2
     = link_to t(".delete"), dashboard_course_homework_path(course, homework), method: :delete, data: { confirm: "Are you sure?" }
+

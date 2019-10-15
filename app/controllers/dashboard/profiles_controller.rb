@@ -13,11 +13,8 @@ class Dashboard::ProfilesController < Dashboard::BaseController
     if succes
       sign_in current_user, bypass: true
       flash[:notice] = t(".update")
-      if current_user.has_role?(:mentor)
-        redirect_to dashboard_courses_path
-      else
-        redirect_to courses_path
-      end
+
+      redirect_to edit_dashboard_profiles_path
     else
       render :edit
     end
