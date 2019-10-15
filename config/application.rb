@@ -11,6 +11,7 @@ module Qna
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
     config.assets.paths << Rails.root.join("vendor/bootstrap-3.1.1-dist")
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2

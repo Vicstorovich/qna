@@ -3,7 +3,7 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   responders :flash, :http_cache
   resource_context :current_user
-  paginate_collection 5
+  paginate_collection 2
   add_actions :index, :create, :destroy
   authorize_resource
 

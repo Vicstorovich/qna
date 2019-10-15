@@ -1,20 +1,45 @@
-%h2 Sign up Users
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = f.error_notification
-  = f.simple_fields_for :profile do |pf|
-    = pf.input :name
-  = f.input :email,
-    required: true,
-    autofocus: true,
-    input_html: { autocomplete: "email" }
-  = f.input :password,
-    required: true,
-    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-    input_html: { autocomplete: "new-password" }
-  = f.input :password_confirmation,
-    required: true,
-    input_html: { autocomplete: "new-password" }
-  .form-actions
-    = f.button :submit, "Sign up"
-= render "devise/shared/links"
+%body
+  .container
+    .row
+      %article.col-xs-12.maincontent
+        %header.page-header
+          %h1.page-title Registration
+        .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+          .panel.panel-default
+            .panel-body
+              %h3.thin.text-center Register a new account
+              %hr/
+              = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+                = f.error_notification
+                .top-margin
+                  = f.simple_fields_for :profile do |pf|
+                    = pf.input :name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "name" },
+                    input_html: { class: "form-control" }
+                .top-margin
+                  = f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" },
+                    input_html: { class: "form-control" }
+                .row.top-margin
+                  .col-sm-6
+                    = f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" },
+                      input_html: { class: "form-control" }
+                  .col-sm-6
+                    = f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" },
+                      input_html: { class: "form-control" }
+                %hr/
+                .row
+                  .col-lg-8
+                    = link_to "Login", new_session_path(resource_name), class: "btn"
+                  .col-lg-4.text-right
+                    = f.button :submit, "Register", class: "btn btn-action"
 

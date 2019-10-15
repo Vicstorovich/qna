@@ -1,2 +1,11 @@
-%h1
-  =link_to "#{t(".welcome")}", courses_path
+%body
+  %header#head
+    .container
+      .row
+        %h1.lead=link_to "#{t(".welcome")}", courses_path
+        %p.tagline
+          PROGRESSUS: free business bootstrap template by
+          %a{:href => "http://www.gettemplate.com/?utm_source=progressus&utm_medium=template&utm_campaign=progressus"} GetTemplate
+        %p
+          %a.btn.btn-default.btn-lg{:role => "button"} MORE INFO
+          %a.btn.btn-action.btn-lg{:role => "button"} DOWNLOAD NOW

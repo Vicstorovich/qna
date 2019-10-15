@@ -10,16 +10,13 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body.home
+    / %p#notice= notice
+    / %p.alert= alert
 
     = render "shared/menu"
 
-    #main-container.container-fluid
-      .container
-        .row
-          .col-3.sidebar
-            / %h3 Сайдбар
-          .col-9.content
-            %p#notice= notice
-            %p.alert= alert
-            = yield
-    =# render "shared/footer"
+
+
+
+    = yield
+    = render "shared/footer"

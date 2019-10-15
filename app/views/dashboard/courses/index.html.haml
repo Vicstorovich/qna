@@ -1,31 +1,50 @@
-= link_to t('.new_course'), sti_course_path('RecordedCourse', nil, :new)
-|
-= link_to t(".new_intense"), sti_course_path('RecordedIntense', nil, :new)
-|
-= link_to t('.new_online'), sti_course_path('OnlineIntense', nil, :new)
+%body
+  %header#head.secondary
+  / container
+  .container
+    %ol.breadcrumb
+      %li.active
+        = link_to t('.new_course'), sti_course_path('RecordedCourse', nil, :new)
 
-%h1 #{t(".text")}
+      %li.active
+        = link_to t(".new_intense"), sti_course_path('RecordedIntense', nil, :new)
 
-.courses
-  %table.table.table-sm.table-inverse
-    %thead
-      %tr
-        %th #{t(".name")}
-        %th #{t(".type")}
-        %th #{t(".image")}
-        %th
-        %th
-        %th #{t(".participants")}
-    %tbody
-      - collection.each do |course|
-        %tr
-          %td= link_to course.name, dashboard_course_lessons_path(course)
-          %td= course.type
-          %td= image_tag course.image.thumb.url
-          %td= link_to t('.edit'), sti_course_path(course.type, course, :edit)
-          %td= link_to t('.delete'), sti_courses_path(course.type, course), method: :delete, data: { confirm: t(".confirm") }
-          %td= link_to t(".users"), dashboard_course_path(course)
-%br/
-%br/
-= paginate collection
-= collection.total_count
+      %li.active
+        = link_to t('.new_online'), sti_course_path('OnlineIntense', nil, :new)
+    .row
+      / Sidebar
+      %aside.col-md-2.sidebar.sidebar-left
+        .row.widget
+          .col-xs-12
+            %h4 Total courses
+            %h1= collection.total_count
+        .row.widget
+          .col-xs-12
+            %h4 View courses
+            %p= paginate collection
+        .row.widget
+          .col-xs-12
+      / Article main content
+      %article.col-md-10.maincontent
+        %header.page-header
+          %h1.page-title #{t(".text")}
+          %div{:style => "overflow-x:auto;"}
+            %table.table.table-sm.table-inverse
+              %thead
+                %tr
+                  %th #{t(".name")}
+                  %th #{t(".type")}
+                  %th #{t(".image")}
+                  %th
+                  %th
+                  %th #{t(".participants")}
+              %tbody
+                - collection.each do |course|
+                  %tr
+                    %td= link_to course.name, dashboard_course_lessons_path(course)
+                    %td= course.type
+                    %td= image_tag course.image.thumb.url
+                    %td= link_to t('.edit'), sti_course_path(course.type, course, :edit)
+                    %td= link_to t('.delete'), sti_courses_path(course.type, course), method: :delete, data: { confirm: t(".confirm") }
+                    %td= link_to t(".users"), dashboard_course_path(course)
+
