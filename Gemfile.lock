@@ -98,13 +98,6 @@ GEM
     coderay (1.1.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     database_cleaner (1.7.0)
@@ -134,7 +127,6 @@ GEM
     eventmachine (1.2.7-java)
     eventmachine (1.2.7-x64-mingw32)
     eventmachine (1.2.7-x86-mingw32)
-    execjs (2.7.0)
     factory_bot (5.0.2)
       activesupport (>= 4.2.0)
     factory_bot_rails (5.0.2)
@@ -315,6 +307,8 @@ GEM
     rack (2.0.7)
     rack-livereload (0.3.17)
       rack
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -433,17 +427,6 @@ GEM
       tty-which (~> 0.4.0)
       virtus (~> 1.0)
     rubyzip (1.2.3)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.7)
-      railties (>= 4.0.0, < 6)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
     seed_dump (3.3.1)
       activerecord (>= 4)
       activesupport (>= 4)
@@ -495,15 +478,10 @@ GEM
     tty-screen (0.6.5)
     tty-tree (0.3.0)
     tty-which (0.4.1)
-    turbolinks (5.2.0)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.1)
       tzinfo (>= 1.0.0)
-    uglifier (4.1.20)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
     unicode_utils (1.4.0)
     virtus (1.0.5)
@@ -518,6 +496,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webpacker (4.2.0)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-driver (0.7.0-java)
@@ -541,7 +523,6 @@ DEPENDENCIES
   carrierwave
   chromedriver-helper
   cocoon
-  coffee-rails (~> 4.2)
   database_cleaner
   devise
   dotenv-rails
@@ -580,7 +561,6 @@ DEPENDENCIES
   rubocop-rspec
   ruby_warning_filter (~> 1.0.0)
   rubycritic
-  sass-rails (~> 5.0)
   seed_dump
   selenium-webdriver
   shoulda-matchers
@@ -590,10 +570,9 @@ DEPENDENCIES
   spring-commands-rspec
   spring-commands-rubocop
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   tzinfo-data
-  uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  webpacker
 
 RUBY VERSION
    ruby 2.4.5p335

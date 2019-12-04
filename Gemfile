@@ -7,10 +7,10 @@ ruby '2.4.5'
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
+# gem 'sass-rails', '~> 5.0'
+# gem 'uglifier', '>= 1.3.0'
+# gem 'coffee-rails', '~> 4.2'
+# gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -42,6 +42,7 @@ gem 'rolify'
 gem 'cancancan'
 gem 'has_scope'
 gem "responders"
+gem "webpacker"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
