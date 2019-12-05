@@ -1,3 +1,5 @@
 import './rails'
+import 'bootstrap/dist/js/bootstrap'
 import "../vendor/cocoon"
-import "../vendor/bootstrap-3.1.1-dist"
+import "../assets"
+
