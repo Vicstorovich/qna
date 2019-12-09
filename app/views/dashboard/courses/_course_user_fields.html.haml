@@ -1,3 +1,6 @@
+
 .nested-fields
-  = f.association :user, collection: User.all, label_method: lambda { |user| user.profile.name }
-  = link_to_remove_association t(".remove"), f
+  .row
+    .col-sm-8
+      = f.association :user, collection: User.all, label_method: lambda { |user| user.profile.name }, input_html: { class: "form-control" }
+      = link_to_remove_association t(".remove"), f, class: "btn"

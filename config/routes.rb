@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'appointment#index'
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations',
+                                    sessions: 'users/sessions' }
 
   resources :courses, only: %i[index] do
     resources :course_participants, only: %i[index], path: "participants"

@@ -1,4 +1,29 @@
-%ul
-  - @users.each do |user|
-    %li= link_to user.email, edit_admin_user_path(user)
-    %p= user.profile.name
+%body
+  %header#head.secondary
+%body
+  .container
+    %ol.breadcrumb
+      %li
+        %a{:href => "index.html"} Home
+      %li.active Admin panel
+    .row
+      / Article main content
+      %article.col-sm-8.maincontent
+        %header.page-header
+          %h1.page-title Infomation:
+        %h3 Lorem ipsum
+        %p
+          %img.img-rounded.pull-right{:alt => "", :src => "assets/images/mac.jpg", :width => "300"}/
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, consequuntur eius repellendus eos aliquid molestiae ea laborum ex quibusdam laudantium voluptates placeat consectetur quam aliquam beatae soluta accusantium iusto nihil nesciunt unde veniam magnam repudiandae sapiente.
+      / /Article
+      / Sidebar
+      %aside.col-sm-4.sidebar.sidebar-right
+        .widget
+          %h4 List users
+          %ul.list-unstyled.list-spaces
+            - @users.each do |user|
+              %li= link_to user.email, edit_admin_user_path(user)
+              %p= user.profile.name
+
+      / /Sidebar
+  / /container

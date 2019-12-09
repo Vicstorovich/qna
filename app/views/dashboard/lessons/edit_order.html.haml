@@ -1,12 +1,44 @@
-%h1 #{t(".text")}
-= form_with url: update_order_dashboard_course_lessons_path(course), method: :put, local: true do
-  - @lessons.each do |lesson|
-    = fields_for "lessons[]", lesson do |f|
-      %h3= lesson.title
-      = f.label :priority
-      %br/
-      = f.number_field :priority
-      %br/
-      = f.check_box :draft
-      = f.label :draft
-  %p= submit_tag t(".submit")
+%body
+  %header#head.secondary
+  / container
+  .container
+    %ol.breadcrumb
+      %li
+        = link_to "Back",  dashboard_course_lessons_path
+      %li.active Order lessons page
+    .row
+      / Article main content
+      %article.col-sm-9.maincontent
+        %header.page-header
+          %h1.page-title #{t(".text")}
+        %br/
+        = form_with url: update_order_dashboard_course_lessons_path(course), method: :put, local: true do
+          - @lessons.each do |lesson|
+            = fields_for "lessons[]", lesson do |f|
+              .row
+                %h3= lesson.title
+                .col-sm-4
+                  = f.label :priority, class: "form-control"
+                .col-sm-4
+                  = f.number_field :priority,  class: "form-control"
+                .col-sm-4
+                  = f.check_box :draft, class: "checkbox"
+                  = f.label :draft
+          %br/
+          .row
+            .col-sm-12.text-right
+              = submit_tag t(".submit"), class: "btn btn-action"
+      / /Article
+      / Sidebar
+      %aside.col-sm-3.sidebar.sidebar-right
+        .widget
+          %h4 Infomation
+          %address
+            %p#notice= notice
+            %p.alert= alert
+          %h4 Phone:
+          %address
+            (713) 791-1414
+      / /Sidebar
+%br/
+%br/

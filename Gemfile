@@ -7,16 +7,17 @@ ruby '2.4.5'
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
+# gem 'sass-rails', '~> 5.0'
+# gem 'uglifier', '>= 1.3.0'
+# gem 'coffee-rails', '~> 4.2'
+# gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+gem 'mini_racer'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
@@ -29,7 +30,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick', '~> 4.8'
-gem 'bootstrap', '~> 4.3.1'
+# gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'redis-rails'
 gem 'email_validator'
@@ -41,6 +42,7 @@ gem 'rolify'
 gem 'cancancan'
 gem 'has_scope'
 gem "responders"
+gem "webpacker"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

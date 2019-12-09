@@ -1,23 +1,72 @@
-= link_to t(".new"),  new_dashboard_course_lesson_path(course)
-= link_to t(".home"), dashboard_course_homeworks_path(course)
-= link_to t(".course"), dashboard_courses_path
-
-%h1 #{t(".text")}
-.lessons
-  = form_with url: edit_order_dashboard_course_lessons_path(course), local: true do
-    = submit_tag t(".order")
-    %ul
-      - @lessons.each do |lesson|
-        %li{:class => "#{cycle('lesson-odd', 'lesson-even')}"}
-          - if lesson.draft?
-            %p The lesson is in drafts
-          = link_to lesson.title, dashboard_course_lesson_path(course, lesson)
-          - if lesson.share_key.present?
-            = lesson.share_key
-          - else
-            - if can? :share_lesson, lesson
-              = link_to "Share", dashboard_course_lesson_shares_path(course, lesson), method: :post
-          = link_to t(".edit"), edit_dashboard_course_lesson_path(course, lesson)
-          = link_to t(".delete"), dashboard_course_lesson_path(course, lesson), method: :delete, data: { confirm: "Are you sure?" }
-
-= paginate @lessons
+%body
+  %header#head.secondary
+  / container
+  .container
+    %ol.breadcrumb
+      %li
+        = link_to t(".new"),  new_dashboard_course_lesson_path(course)
+      %li
+        = link_to t(".home"), dashboard_course_homeworks_path(course)
+      %li
+        = link_to t(".course"), dashboard_courses_path
+      %li.active Lessons "#{@course.name}"
+    .row
+      / Article main content
+      %article.col-sm-8.maincontent
+        %header.page-header
+          %h1.page-title #{t(".text")}
+        = form_with url: edit_order_dashboard_course_lessons_path(course), local: true do
+          = submit_tag t(".order"), class: "btn"
+        %header.page-header
+          %table.table.table-borderless
+            %thead
+              %tr
+                %th Name
+                %th Drafr?
+                %th Sharies
+                %th Edit
+                %th Delete
+            - @lessons.each do |lesson|
+              %tbody
+                %tr
+                  %td
+                    = link_to lesson.title, dashboard_course_lesson_path(course, lesson)
+                  %td
+                    - if lesson.draft?
+                      %p The lesson is in drafts
+                  %td
+                    - if lesson.share_key.present?
+                      = lesson.share_key
+                    - else
+                      - if can? :share_lesson, lesson
+                        = link_to "Share", dashboard_course_lesson_shares_path(course, lesson), method: :post
+                  %td
+                    = link_to t(".edit"), edit_dashboard_course_lesson_path(course, lesson)
+                  %td
+                    = link_to t(".delete"), dashboard_course_lesson_path(course, lesson), method: :delete, data: { confirm: "Are you sure?" }
+      = paginate @lessons
+      %aside.col-sm-4.sidebar.sidebar-right
+        .widget
+          %h4 Infomation
+          %ul.list-unstyled.list-spaces
+            %li
+              %a{:href => ""} Lorem ipsum dolor
+              %br/
+              %p#notice= notice
+              %p.alert= alert
+            %li
+              %a{:href => ""} Totam, libero, quis
+              %br/
+              %span.small.text-muted Suscipit veniam debitis sed ipsam quia magnam eveniet perferendis nisi.
+            %li
+              %a{:href => ""} Enim, sequi dignissimos
+              %br/
+              %span.small.text-muted Reprehenderit illum quod unde quo vero ab inventore alias veritatis.
+            %li
+              %a{:href => ""} Suscipit, consequatur, aut
+              %br/
+              %span.small.text-muted Sed, mollitia earum debitis est itaque esse reiciendis amet cupiditate.
+            %li
+              %a{:href => ""} Nam, illo, veritatis
+              %br/
+              %span.small.text-muted Delectus, sapiente illo provident quo aliquam nihil beatae dignissimos itaque.

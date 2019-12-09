@@ -1,5 +1,44 @@
-= link_to t(".back"), courses_path
-%h1 #{t(".text")}
+%body
+  %header#head.secondary
+  / container
+  .container
+    %ol.breadcrumb
+      %li
+        = link_to t(".back"), courses_path
+      %li.active Partisipants course page
+    .row
+      / Article main content
+      %article.col-sm-9.maincontent
+        %header.page-header
+          %h1.page-title #{t(".text")}
+        %br/
+        %table.table.table-borderless
+          %thead
+            %tr
+              %th Name partisipant
+              %th Enrolled in the course
+          - @course_users.each do |course_user|
+            %tbody
+              %tr
+                %td= course_user.user.profile.name || "Unknown"
+                %td= course_user.created_at.strftime("%B %d %Y")
+                / - if user_course.pupil?
+                /   %td #{t(".on")}
+                /   %td= link_to t('.deduct_html'), not_pupil_dashboard_course_course_user_path(resource, user_course)
+                / -else
+                /   %td #{t(".of")}
+                /   %td= link_to t(".enroll_html"), pupil_dashboard_course_course_user_path(resource, user_course)
+        %br/
+        %br/
+      / /Article
+      / Sidebar
+      %aside.col-sm-3.sidebar.sidebar-right
+        .widget
+          %h4 Infomation
+          %address
+            2002 Holcombe Boulevard, Houston, TX 77030, USA
+          %h4 Phone:
+          %address
+            (713) 791-1414
+      / /Sidebar
 
-- @course_users.each do |course_user|
-  %p= "#{course_user.user.profile.name || "Unknown"} #{t(".jonet")} #{course_user.created_at.strftime("%B %d %Y")}"

@@ -1,14 +1,47 @@
-= link_to t(".back"), dashboard_courses_path
-
-%h1 #{t(".name", name: resource.name)}
-%ul
-- @course_users.each do |user_course|
-  %li
-    = user_course.user.profile.name
-  - if user_course.pupil?
-    %h4 #{t(".on")}
-    = link_to t('.deduct_html'), not_pupil_dashboard_course_course_user_path(resource, user_course)
-  -else
-    %h4 #{t(".of")}
-    = link_to t(".enroll_html"), pupil_dashboard_course_course_user_path(resource, user_course)
+%body
+  %header#head.secondary
+  / container
+  .container
+    %ol.breadcrumb
+      %li
+        = link_to t(".back"), dashboard_courses_path
+      %li.active Partisipants course page
+    .row
+      / Article main content
+      %article.col-sm-9.maincontent
+        %header.page-header
+          %h1.page-title #{t(".name", name: resource.name)}
+        %br/
+        %table.table.table-borderless
+          %thead
+            %tr
+              %th Name partisipant
+              %th Condition
+              %th Action
+          - @course_users.each do |user_course|
+            %tbody
+              %tr
+                %td= user_course.user.profile.name
+                - if user_course.pupil?
+                  %td #{t(".on")}
+                  %td= link_to t('.deduct_html'), not_pupil_dashboard_course_course_user_path(resource, user_course)
+                -else
+                  %td #{t(".of")}
+                  %td= link_to t(".enroll_html"), pupil_dashboard_course_course_user_path(resource, user_course)
+        %br/
+        %br/
+      / /Article
+      / Sidebar
+      %aside.col-sm-3.sidebar.sidebar-right
+        .widget
+          %h4 Infomation
+          %address
+            %p#notice= notice
+            %p.alert= alert
+          %h4 Phone:
+          %address
+            (713) 791-1414
+      / /Sidebar
+%body
+  %header#head.secondary
 

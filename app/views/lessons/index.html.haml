@@ -1,11 +1,24 @@
-= link_to t(".back"), courses_path
-%h1 #{t(".text")} "#{course.type}"
-.lessons
-  - if can? :read, Lesson
-    - @lessons.each do |lesson|
-      = render "#{lesson.course.type.underscore}", lesson: lesson
-%br/
-%br/
-= paginate @lessons
-
-
+%body
+  %header#head.secondary
+%body
+  .container
+    %ol.breadcrumb
+      %li
+        = link_to t(".back"), courses_path
+      %li.active Page all lessons of the "#{course.name}"
+    .row
+      %article.col-sm-10.maincontent
+        %header.page-header
+          %h1.page-title #{t(".text")}
+        - if can? :read, Lesson
+          - @lessons.each do |lesson|
+            = render "#{lesson.course.type.underscore}", lesson: lesson
+        = paginate @lessons
+      %aside.col-sm-2.sidebar.sidebar-right
+        .widget
+          %h4 Infomations:
+          %ul.list-unstyled.list-spaces
+            %li
+            %li
+            %li
+            %li
