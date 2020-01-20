@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def set_locale
+  def set_locale   
     I18n.locale = I18n.locale_available?(params[:lang]) ? params[:lang] : I18n.default_locale
   end
 

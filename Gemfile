@@ -6,11 +6,11 @@ ruby '2.4.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
+gem 'puma', '~> 3.12'
+# gem 'sass-rails', '~> 5.0'
+# gem 'uglifier', '>= 1.3.0'
+# gem 'coffee-rails', '~> 4.2'
+# gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -29,7 +29,7 @@ gem 'hamlit-rails'
 gem 'simple_form'
 gem 'kaminari'
 gem 'carrierwave'
-gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.9'
 # gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'redis-rails'
@@ -42,6 +42,7 @@ gem 'rolify'
 gem 'cancancan'
 gem 'has_scope'
 gem "responders"
+gem "webpacker"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
