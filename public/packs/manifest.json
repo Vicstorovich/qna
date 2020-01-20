@@ -1,0 +1,35 @@
+{
+  "application.js": "/packs/js/application-944adbffd3f14062434e.js",
+  "application.js.map": "/packs/js/application-944adbffd3f14062434e.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-944adbffd3f14062434e.js"
+      ],
+      "js.map": [
+        "/packs/js/application-944adbffd3f14062434e.js.map"
+      ]
+    },
+    "rails": {
+      "js": [
+        "/packs/js/rails-b7859f6e046fe275e435.js"
+      ],
+      "js.map": [
+        "/packs/js/rails-b7859f6e046fe275e435.js.map"
+      ]
+    }
+  },
+  "media/assets/fonts/FontAwesome.otf": "/packs/media/assets/fonts/FontAwesome-3f3a623e88cb5c62eaa2367195e98b67.otf",
+  "media/assets/fonts/fontawesome-webfont.eot": "/packs/media/assets/fonts/fontawesome-webfont-8b27bc96115c2d24350f0d09e6a9433f.eot",
+  "media/assets/fonts/fontawesome-webfont.svg": "/packs/media/assets/fonts/fontawesome-webfont-0a799148a50bb02c6f380eabd8d97559.svg",
+  "media/assets/fonts/fontawesome-webfont.ttf": "/packs/media/assets/fonts/fontawesome-webfont-dcb26c7239d850266941e80370e207c1.ttf",
+  "media/assets/fonts/fontawesome-webfont.woff": "/packs/media/assets/fonts/fontawesome-webfont-3293616ec0c605c7c2db25829a0a509e.woff",
+  "media/assets/fonts/glyphicons-halflings-regular.eot": "/packs/media/assets/fonts/glyphicons-halflings-regular-f4769f9bdb7466be65088239c12046d1.eot",
+  "media/assets/fonts/glyphicons-halflings-regular.svg": "/packs/media/assets/fonts/glyphicons-halflings-regular-89889688147bd7575d6327160d64e760.svg",
+  "media/assets/fonts/glyphicons-halflings-regular.ttf": "/packs/media/assets/fonts/glyphicons-halflings-regular-e18bbf611f2a2e43afc071aa2f4e1512.ttf",
+  "media/assets/fonts/glyphicons-halflings-regular.woff": "/packs/media/assets/fonts/glyphicons-halflings-regular-fa2772327f55d8198301fdb8bcfc8158.woff",
+  "media/assets/fonts/glyphicons-halflings-regular.woff2": "/packs/media/assets/fonts/glyphicons-halflings-regular-448c34a56d699c29117adc64c43affeb.woff2",
+  "media/assets/images/bg_header.jpg": "/packs/media/assets/images/bg_header-be8040b3df26a1770735a8f15c5239f1.jpg",
+  "rails.js": "/packs/js/rails-b7859f6e046fe275e435.js",
+  "rails.js.map": "/packs/js/rails-b7859f6e046fe275e435.js.map"
+}
