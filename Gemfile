@@ -44,6 +44,7 @@ gem 'cancancan'
 gem 'has_scope'
 gem "responders"
 gem "webpacker"
+gem "jwt"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

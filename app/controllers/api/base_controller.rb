@@ -37,10 +37,27 @@ class Api::BaseController < ActionController::Base
   end
 
   def current_user
-
+    if has_valid_auth_type?
+      user = User.find(auth["user"])
+      if user
+        @current_user ||= user
+      end
+    end
   end
 
   def authentication_user!
     raise NotAuthorized unless current_user.present?
+  end
+
+  def auth_header
+    request.headers['Authorization'].to_s.scan(/Bearer (.*)$/).flatten.last
+  end
+
+  def has_valid_auth_type?
+    !!request.headers['Authorization'].to_s.scan(/Bearer/).flatten.first
+  end
+
+  def auth
+    Auth.decode(auth_header) || {}
   end
 end

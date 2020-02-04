@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :auth_tokens, only: :create
+    post '/login', to: "auth_tokens#create"
     namespace :v1 do
       resources :courses, only: :index
     end

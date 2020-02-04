@@ -12,6 +12,7 @@ module Qna
     config.app_generators.scaffold_controller :responders_controller
     config.assets.paths << Rails.root.join("vendor/bootstrap-3.1.1-dist")
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.autoload_paths << Rails.root.join('lib')
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2

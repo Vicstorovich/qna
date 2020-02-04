@@ -214,6 +214,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.3.0)
     json (2.3.0-java)
+    jwt (2.2.1)
     kaminari (1.2.0)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.0)
@@ -527,6 +528,7 @@ DEPENDENCIES
   has_scope
   jbuilder (~> 2.5)
   jquery-rails
+  jwt
   kaminari
   launchy
   letter_opener
