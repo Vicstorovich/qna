@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  namespace :api do
+    resources :auth_tokens, only: :create
+    namespace :v1 do
+      resources :courses, only: :index
+    end
+  end
+
   scope :admin do
     devise_for :admins, controllers: { sessions: 'admin/admins/sessions' }
   end
+
   namespace :admin do
     root to: 'users#index'
     resources :users, only: [:index, :edit, :update]
