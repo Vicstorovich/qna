@@ -45,6 +45,7 @@ gem 'has_scope'
 gem "responders"
 gem "webpacker"
 gem "jwt"
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
