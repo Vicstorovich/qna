@@ -1,2 +1,2 @@
-require "./db/seeds/admin"
-require "./db/seeds/role"
+require './db/seeds/admin'
+require './db/seeds/role'

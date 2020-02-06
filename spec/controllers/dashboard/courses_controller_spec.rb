@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe Dashboard::CoursesController, type: :controller do
   let(:mentor_role) { create_list(:role, 1, name: 'mentor') }
@@ -8,12 +8,12 @@ RSpec.describe Dashboard::CoursesController, type: :controller do
 
   before { log_in(mentor) }
 
-  describe "GET #index" do
+  describe 'GET #index' do
     let(:courses) { create_list(:course, 2, user: mentor) }
 
     before { get :index }
 
-    it "fills the array of courses according to pagination" do
+    it 'fills the array of courses according to pagination' do
       expect(assigns(:courses)).to match_array(courses)
 
       expect(response).to render_template :index
@@ -32,12 +32,12 @@ RSpec.describe Dashboard::CoursesController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
+  describe 'DELETE #destroy' do
     let(:course) { create(:course, user: mentor) }
     let(:delete_action) { delete :destroy, params: { id: course } }
 
-    context "if question belongs to the user" do
-      it "deletes course" do
+    context 'if question belongs to the user' do
+      it 'deletes course' do
         expect { delete_action }.to change(Course, :count).by(0)
         expect(response).to redirect_to(dashboard_courses_path)
         expect(flash[:notice]).to eq 'Course was successfully destroyed.'

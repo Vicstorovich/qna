@@ -18,7 +18,7 @@ class Admin::UsersController < Admin::ApplicationController
   private
 
   def permitted_params
-    params.require(:user).permit(:email, role_ids:[])
+    params.require(:user).permit(:email, role_ids: [])
   end
 
   def user

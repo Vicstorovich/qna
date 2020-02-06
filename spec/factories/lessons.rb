@@ -7,6 +7,6 @@ FactoryBot.define do
     course
     title { generate(:title) }
 
-    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/images/my_file.jpg')))}
+    image { Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/images/my_file.jpg'))) }
   end
 end

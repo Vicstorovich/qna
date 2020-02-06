@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  VALID_EMAIL_GITHAB = /^https:\/\/github\.com\//i.freeze
+  VALID_EMAIL_GITHAB = %r{^https://github\.com/}i.freeze
 
   belongs_to :user
 

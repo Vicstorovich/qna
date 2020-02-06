@@ -1,4 +1,4 @@
-require "digest/md5"
+require 'digest/md5'
 class User < ApplicationRecord
   rolify
   # Include default devise modules. Others available are:
@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :courses
   has_many :homeworks
   has_many :course_users, dependent: :destroy
-  has_many :participated_courses, through: :course_users, class_name: "Course", source: :course
+  has_many :participated_courses, through: :course_users, class_name: 'Course', source: :course
 
   accepts_nested_attributes_for :profile, update_only: true
 

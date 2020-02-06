@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Ability do
-
-  subject(:ability) { Ability.new(user, 'a12d3f5h', "Dashboard") }
+  subject(:ability) { Ability.new(user, 'a12d3f5h', 'Dashboard') }
 
   describe 'for guest' do
     let(:user) { nil }
     let(:mentor_role) { create_list(:role, 1, name: 'mentor') }
     let(:other_user) { create(:user, roles: mentor_role) }
     let(:other_course) { create(:course, user: other_user) }
-
 
     it { should be_able_to :read, Course }
     it { should_not be_able_to :manage, :all }

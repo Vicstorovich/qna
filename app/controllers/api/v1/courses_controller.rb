@@ -1,4 +1,4 @@
-class  Api::V1::CoursesController <  Api::BaseController
+class Api::V1::CoursesController < Api::BaseController
   before_action :authentication_user!
 
   def index

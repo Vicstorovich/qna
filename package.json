@@ -12,7 +12,9 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
+    "@prettier/plugin-ruby": "^0.17.0",
     "expose-loader": "^0.7.5",
+    "prettier": "^1.19.1",
     "webpack-dev-server": "^3.9.0"
   }
 }

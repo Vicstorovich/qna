@@ -21,13 +21,11 @@ class Course < ApplicationRecord
   end
 
   def self.types
-    %w(OnlineIntense RecordedIntense RecordedCourse)
+    %w[OnlineIntense RecordedIntense RecordedCourse]
   end
 
   def lessons_piority
-    lessons.map do |l|
-      l.priority
-    end
+    lessons.map(&:priority)
   end
 
   def homeworks_user(user)

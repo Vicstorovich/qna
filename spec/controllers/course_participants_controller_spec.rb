@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe CourseParticipantsController, type: :controller do
   let(:mentor_role) { create_list(:role, 1, name: 'mentor') }
@@ -13,15 +13,15 @@ RSpec.describe CourseParticipantsController, type: :controller do
 
     # let(:action)  { student.participated_courses.push(course) }
 
-    before { get :index, params: {course_id: course.id} }
+    before { get :index, params: { course_id: course.id } }
 
-      it 'should return collection of course participants' do
-        expect(response).to render_template(:index)
-        expect(assigns(:course).to_a).to match_array(course.course_users)
-      end
+    it 'should return collection of course participants' do
+      expect(response).to render_template(:index)
+      expect(assigns(:course).to_a).to match_array(course.course_users)
+    end
 
-      # it "should add course to participate" do
-      #   expect { action }.to change(course.course_users, :count).by(1)
-      # end
+    # it "should add course to participate" do
+    #   expect { action }.to change(course.course_users, :count).by(1)
+    # end
   end
 end

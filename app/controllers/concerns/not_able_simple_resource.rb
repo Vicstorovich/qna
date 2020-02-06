@@ -1,12 +1,11 @@
 module SimpleResource
-
   extend ActiveSupport::Concern
 
-  ALL_ACTIONS_METHODS = [:index, :show, :new, :edit, :create, :update, :destroy]
+  ALL_ACTIONS_METHODS = %i[index show new edit create update destroy].freeze
 
   included do
     respond_to :html
-    before_action :build_resource, only: [:new, :create]
+    before_action :build_resource, only: %i[new create]
 
     def resource_name
       controller_name.classify.underscore
@@ -26,7 +25,8 @@ module SimpleResource
 
     def resource
       return instance_variable_get(:"@#{resource_name}") if instance_variable_get(:"@#{resource_name}").present?
-      instance_variable_set(:"@#{resource_name}",  association_chain.find(params[:id]))
+
+      instance_variable_set(:"@#{resource_name}", association_chain.find(params[:id]))
     end
     helper_method :resource
 
@@ -39,11 +39,11 @@ module SimpleResource
     helper_method :collection
 
     def permitted_params
-      raise "Not Implemented"
+      raise 'Not Implemented'
     end
 
     def after_actions_redirect_pash
-      raise "Not Implemented"
+      raise 'Not Implemented'
     end
 
     def association_chain
@@ -60,7 +60,7 @@ module SimpleResource
       if self.class.resource_context.present?
         context_method = self.class.resource_context
 
-        context = send(context_method) if self.respond_to? context_method, true
+        context = send(context_method) if respond_to? context_method, true
 
       elsif self.class.resource_association.present?
 
@@ -77,9 +77,9 @@ module SimpleResource
       # binding.pry
       context_association = self.class.resource_association.to_s
 
-      context_association_klass =  context_association.classify.constantize
+      context_association_klass = context_association.classify.constantize
 
-      instance_variable_set(:"@#{context_association}", context_association_klass.find(params[("#{context_association}" + "_id").to_sym]))
+      instance_variable_set(:"@#{context_association}", context_association_klass.find(params[(context_association.to_s + '_id').to_sym]))
     end
 
     helper_method :context_association
@@ -113,11 +113,11 @@ module SimpleResource
 
     def build_resource
       instance =
-      if params[resource_name.to_sym].present?
-        association_chain.is_a?(ActiveRecord::Relation) ? association_chain.build(permitted_params) : association_chain.new(permitted_params)
-      else
-        association_chain.is_a?(ActiveRecord::Relation) ? association_chain.build : association_chain.new
-      end
+        if params[resource_name.to_sym].present?
+          association_chain.is_a?(ActiveRecord::Relation) ? association_chain.build(permitted_params) : association_chain.new(permitted_params)
+        else
+          association_chain.is_a?(ActiveRecord::Relation) ? association_chain.build : association_chain.new
+        end
 
       instance_variable_set("@#{resource_name}".to_sym, instance)
     end
@@ -131,7 +131,6 @@ module SimpleResource
 
   class_methods do
     def add_actions(*actions)
-
       if actions.count == 1 && actions[0] == :all
         ALL_ACTIONS_METHODS.each do |action|
           send(:public, action)
@@ -171,22 +170,18 @@ module SimpleResource
 
   private
 
-  def index
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
-  def new
-  end
+  def new; end
 
   def create
     resource.save
     respond_with resource, location: after_actions_redirect_pash
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     resource.assign_attributes(permitted_params)

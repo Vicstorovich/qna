@@ -1,4 +1,4 @@
-require "application_responder"
+require 'application_responder'
 
 class ApplicationController < ActionController::Base
   def self. my_http_basic_authenticate_with(login, password)
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def set_locale   
+  def set_locale
     I18n.locale = I18n.locale_available?(params[:lang]) ? params[:lang] : I18n.default_locale
   end
 

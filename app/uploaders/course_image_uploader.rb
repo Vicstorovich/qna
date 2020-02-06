@@ -10,5 +10,4 @@ class CourseImageUploader < BaseUploader
   version :thumb_mini do
     process resize_and_pad: [50, 50]
   end
-
 end
