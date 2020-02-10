@@ -2,10 +2,14 @@ class CourseSerializer < ActiveModel::Serializer
   attributes :id, :user_id, :type, :course_participant
 
   def course_participant
-    current_user.not_participate_in_course?(course)
-  end
+    unless current_user == nil
+      object.itself.course_users.each do |course|
+        @participant = course.user_id == current_user.id
+      end
 
-  def course
-    object.itself
+      @participant.equal?(true)
+    else
+      nil
+    end
   end
 end

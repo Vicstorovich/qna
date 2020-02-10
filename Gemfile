@@ -65,7 +65,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard-spring', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'prettier'
+  # gem 'prettier'
   gem 'rack-livereload'
   gem 'rails_real_favicon'
   gem 'router-visualizer'
