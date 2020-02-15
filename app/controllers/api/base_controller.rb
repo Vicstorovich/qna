@@ -38,10 +38,7 @@ class Api::BaseController < ActionController::Base
 
   def current_user
     if has_valid_auth_type?
-      user = User.find(auth["user"])
-      if user
-        @current_user ||= user
-      end
+      @current_user = User.find(auth["user"])
     end
   end
 
