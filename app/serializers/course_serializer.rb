@@ -1,11 +1,9 @@
 class CourseSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :type, :course_participant
+  attributes :id, :name, :type, :course_participant
 
   def course_participant
     return nil if current_user.blank?
 
-    object.itself.course_users.any? do |course|
-      course.user_id == current_user.id
-    end
+    object.itself.pupil if object.itself.respond_to?(:pupil)
   end
 end

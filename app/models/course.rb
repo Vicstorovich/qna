@@ -3,6 +3,8 @@ class Course < ApplicationRecord
   scope :recorded_intenses, -> { where(type: 'RecordedIntense') }
   scope :online_intenses, -> { where(type: 'OnlineIntense') }
 
+  scope :with_course_participant_flag, -> (user) { joins(%Q{LEFT OUTER JOIN "course_users" ON "course_users"."course_id" = "courses"."id" AND "course_users"."user_id" = #{user}}).select('courses.id, courses.name, courses.type, course_users.pupil').group('courses.id', 'course_users.id')}
+
   belongs_to :user
   has_many :lessons, dependent: :destroy
   has_many :homeworks, through: :lessons, dependent: :destroy
