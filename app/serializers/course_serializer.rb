@@ -4,6 +4,10 @@ class CourseSerializer < ActiveModel::Serializer
   def course_participant
     return nil if current_user.blank?
 
-    object.itself.pupil if object.itself.respond_to?(:pupil)
+    user_participant? if object.itself.respond_to?(:pupil)
+  end
+
+  def user_participant?
+    object.itself.pupil ? true : false
   end
 end
