@@ -1,5 +1,4 @@
 class Dashboard::RecordedIntensesController < Dashboard::CoursesController
-
   resource_ancestor Course
   add_actions :new, :create, :update, :destroy
 
@@ -7,8 +6,9 @@ class Dashboard::RecordedIntensesController < Dashboard::CoursesController
 
   def permitted_params
     params.require(:recorded_intense).permit(:type, :name, :image,
-     :number_hours_video, :number_hours_practice, course_users_attributes: %i[
-        id _destroy user_id],
-       lessons_attributes: %i[id title priority] )
+                                             :number_hours_video, :number_hours_practice, course_users_attributes: %i[
+                                               id _destroy user_id
+                                             ],
+                                                                                          lessons_attributes: %i[id title priority])
   end
 end

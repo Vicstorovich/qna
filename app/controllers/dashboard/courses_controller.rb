@@ -15,12 +15,12 @@ class Dashboard::CoursesController < Dashboard::BaseController
 
   def permitted_params
     params.require(:course).permit(:type, :name, :image,
-     :number_hours_video, :number_hours_practice, :course_start_date,
-      :course_end_date,course_users_attributes: %i[id _destroy user_id],
-       lessons_attributes: %i[id title priority] )
+                                   :number_hours_video, :number_hours_practice, :course_start_date,
+                                   :course_end_date, course_users_attributes: %i[id _destroy user_id],
+                                                     lessons_attributes: %i[id title priority])
   end
 
   def after_actions_redirect_pash
-     dashboard_courses_path
+    dashboard_courses_path
   end
 end

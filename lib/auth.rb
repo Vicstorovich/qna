@@ -1,0 +1,18 @@
+require 'jwt'
+
+class Auth
+  ALGORITHM = 'HS256'.freeze
+
+  def self.issue(payload, exp = 24.hours.from_now)
+    payload[:exp] = exp.to_i
+    JWT.encode(payload, auth_secret, ALGORITHM)
+  end
+
+  def self.decode(token)
+    JWT.decode(token, auth_secret, true, algorithm: ALGORITHM).first
+  end
+
+  def self.auth_secret
+    ENV['AUTH_SECRET'] || Rails.application.secrets.secret_key_base
+  end
+end

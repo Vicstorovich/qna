@@ -9,7 +9,7 @@ class Dashboard::LessonSharesController < Dashboard::BaseController
   private
 
   def type
-    Course.types.include?(params[:type]) ? params[:type] : "Course"
+    Course.types.include?(params[:type]) ? params[:type] : 'Course'
   end
 
   def sti_dashboard_course_lesson_path
@@ -17,7 +17,7 @@ class Dashboard::LessonSharesController < Dashboard::BaseController
   end
 
   def course
-    @course ||=  Course.find(params["#{type.underscore}_id".to_sym])
+    @course ||= Course.find(params["#{type.underscore}_id".to_sym])
   end
 
   def lesson

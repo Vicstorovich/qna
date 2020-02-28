@@ -6,6 +6,6 @@ FactoryBot.define do
   factory :course do
     name { generate(:name) }
 
-    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/images/my_file.jpg')))}
+    image { Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/images/my_file.jpg'))) }
   end
 end

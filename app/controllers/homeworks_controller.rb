@@ -8,7 +8,7 @@ class HomeworksController < ApplicationController
     @homework.user = current_user
     @homework.assign_attributes(homework_params)
 
-    flash[:notice] = t(".create") if @homework.save
+    flash[:notice] = t('.create') if @homework.save
     redirect_to course_lesson_path(course, lesson)
   end
 

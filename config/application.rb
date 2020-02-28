@@ -10,8 +10,9 @@ module Qna
   class Application < Rails::Application
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
-    config.assets.paths << Rails.root.join("vendor/bootstrap-3.1.1-dist")
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join('vendor/bootstrap-3.1.1-dist')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.autoload_paths << Rails.root.join('lib')
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -23,10 +24,10 @@ module Qna
 
     config.generators do |g|
       g.test_framework :rspec,
-            view_specs: false,
-            helper_specs: false,
-            routing_specs: false,
-            request_specs: false
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       request_specs: false
 
       g.helper          false
       g.stylesheets     false
@@ -35,7 +36,7 @@ module Qna
 
     config.i18n.available_locales = %i[ru en]
     config.i18n.default_locale = :en
-    config.time_zone = ENV["TIME_ZONE"]
+    config.time_zone = ENV['TIME_ZONE']
     # config.x.english_website_url = "http://www.application.en."
     # config.x.russian_website_url = "http://www.application.ru."
   end

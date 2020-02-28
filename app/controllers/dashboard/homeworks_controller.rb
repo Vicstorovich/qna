@@ -4,12 +4,12 @@ class Dashboard::HomeworksController < Dashboard::BaseController
   def index
     @lessons = course.lessons.all
 
-    if params[:lesson_id].present? || params.has_value?('0')
+    if params[:lesson_id].present? || params.value?('0')
       @homeworks = course.homeworks.select_lesson(params[:lesson_id])
       @lesson_title = @lessons.find(params[:lesson_id]).title
     else
       @homeworks = course.homeworks
-      @lesson_title = "all"
+      @lesson_title = 'all'
     end
 
     @homeworks = @homeworks.page(params[:page]).per(5)
@@ -19,7 +19,7 @@ class Dashboard::HomeworksController < Dashboard::BaseController
     authorize! :destroy, @homework
     homework.destroy
 
-    flash[:notice] = t(".delete")
+    flash[:notice] = t('.delete')
     redirect_to dashboard_course_homeworks_path(course)
   end
 

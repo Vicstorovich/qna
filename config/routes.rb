@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  namespace :api do
+    post '/login', to: 'auth_tokens#create'
+    namespace :v1 do
+      resources :courses, only: :index
+    end
+  end
+
   scope :admin do
     devise_for :admins, controllers: { sessions: 'admin/admins/sessions' }
   end
+
   namespace :admin do
     root to: 'users#index'
-    resources :users, only: [:index, :edit, :update]
+    resources :users, only: %i[index edit update]
   end
 
   root to: 'appointment#index'
@@ -12,7 +20,7 @@ Rails.application.routes.draw do
                                     sessions: 'users/sessions' }
 
   resources :courses, only: %i[index] do
-    resources :course_participants, only: %i[index], path: "participants"
+    resources :course_participants, only: %i[index], path: 'participants'
     resources :lessons, only: %i[index show] do
       resources :homeworks, only: %i[create]
     end

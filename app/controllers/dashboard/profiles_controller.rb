@@ -4,15 +4,15 @@ class Dashboard::ProfilesController < Dashboard::BaseController
   def edit; end
 
   def update
-    if user_params[:password].present?
-      succes = current_user.update(user_params)
-    else
-      succes = current_user.update_without_password(user_params)
-    end
+    succes = if user_params[:password].present?
+               current_user.update(user_params)
+             else
+               current_user.update_without_password(user_params)
+             end
 
     if succes
       sign_in current_user, bypass: true
-      flash[:notice] = t(".update")
+      flash[:notice] = t('.update')
 
       redirect_to edit_dashboard_profiles_path
     else
@@ -29,6 +29,6 @@ class Dashboard::ProfilesController < Dashboard::BaseController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
-      profile_attributes: %i[name avatar addres link avatar_cache])
+                                 profile_attributes: %i[name avatar addres link avatar_cache])
   end
 end

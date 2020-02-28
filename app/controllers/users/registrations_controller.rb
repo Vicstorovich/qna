@@ -2,9 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
 
   def new
-    super do |r|
-      r.build_profile
-    end
+    super(&:build_profile)
   end
 
   protected

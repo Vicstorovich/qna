@@ -1,12 +1,11 @@
 module SimpleResource
-
   extend ActiveSupport::Concern
 
-  ALL_ACTIONS_METHODS = [:index, :show, :new, :edit, :create, :update, :destroy]
+  ALL_ACTIONS_METHODS = %i[index show new edit create update destroy].freeze
 
   included do
     respond_to :html
-    before_action :build_resource, only: [:new, :create]
+    before_action :build_resource, only: %i[new create]
 
     def resource_name
       controller_name.classify.underscore
@@ -26,7 +25,8 @@ module SimpleResource
 
     def resource
       return instance_variable_get(:"@#{resource_name}") if instance_variable_get(:"@#{resource_name}").present?
-      instance_variable_set(:"@#{resource_name}",  association_chain.find(params[:id]))
+
+      instance_variable_set(:"@#{resource_name}", association_chain.find(params[:id]))
     end
     helper_method :resource
 
@@ -39,11 +39,11 @@ module SimpleResource
     helper_method :collection
 
     def permitted_params
-      raise "Not Implemented"
+      raise 'Not Implemented'
     end
 
     def after_actions_redirect_pash
-      raise "Not Implemented"
+      raise 'Not Implemented'
     end
 
     def association_chain
@@ -57,7 +57,7 @@ module SimpleResource
     def association_chain_by_context
       context_method = self.class.resource_context
 
-      if self.respond_to? context_method, true
+      if respond_to? context_method, true
         context = send(context_method)
       else
         raise "Undefined context_method to #{context_method}"
@@ -94,11 +94,11 @@ module SimpleResource
 
     def build_resource
       instance =
-      if params[resource_name.to_sym].present?
-        association_chain.is_a?(ActiveRecord::Relation) ? association_chain.build(permitted_params) : association_chain.new(permitted_params)
-      else
-        association_chain.is_a?(ActiveRecord::Relation) ? association_chain.build : association_chain.new
-      end
+        if params[resource_name.to_sym].present?
+          association_chain.is_a?(ActiveRecord::Relation) ? association_chain.build(permitted_params) : association_chain.new(permitted_params)
+        else
+          association_chain.is_a?(ActiveRecord::Relation) ? association_chain.build : association_chain.new
+        end
 
       instance_variable_set("@#{resource_name}".to_sym, instance)
     end
@@ -150,8 +150,7 @@ module SimpleResource
     respond_with(collection)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     respond_with(resource)
@@ -162,8 +161,7 @@ module SimpleResource
     respond_with resource, location: after_actions_redirect_pash
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     resource.assign_attributes(permitted_params)

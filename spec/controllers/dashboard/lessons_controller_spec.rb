@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe Dashboard::LessonsController, type: :controller do
   let(:mentor_role) { create_list(:role, 1, name: 'mentor') }
@@ -8,13 +8,13 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
 
   before { log_in(mentor) }
 
-  describe "GET #index" do
+  describe 'GET #index' do
     before { log_in(student) }
 
     let!(:course) { create(:course, user: mentor) }
     let!(:lessons) { create_list(:lesson, 3, course: course) }
 
-    before { get :index, params: {course_id: course.id} }
+    before { get :index, params: { course_id: course.id } }
 
     it 'should return paginated collection' do
       expect(response).to render_template(:index)
@@ -34,26 +34,26 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
     end
   end
 
-  describe "GET #new" do
+  describe 'GET #new' do
     let(:course) { create(:course, user: mentor, type: 'RecordedCourse') }
 
     before { get :new, params: { course_id: course } }
 
-    it "renders new view" do
+    it 'renders new view' do
       expect(response).to render_template :new
     end
   end
 
-  describe "POST #create" do
+  describe 'POST #create' do
     let!(:course) { create(:course, user: mentor, type: 'RecordedCourse') }
 
-    context "with valid attributes" do
+    context 'with valid attributes' do
       let(:action) do
         post :create,
-        params: { course_id: course.id, lesson: attributes_for(:lesson) }
+             params: { course_id: course.id, lesson: attributes_for(:lesson) }
       end
 
-      it "saves a new lesson in the database" do
+      it 'saves a new lesson in the database' do
         expect { action }.to change(Lesson, :count).by(1)
 
         action
@@ -61,13 +61,13 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
       end
     end
 
-    context "with invalid attributes" do
+    context 'with invalid attributes' do
       let(:action) do
         post :create,
-        params: { course_id: course.id, lesson: attributes_for(:lesson, title: nil) }
+             params: { course_id: course.id, lesson: attributes_for(:lesson, title: nil) }
       end
 
-      it "does not save the lesson" do
+      it 'does not save the lesson' do
         expect { action }.to_not change(Course, :count)
 
         action
@@ -76,66 +76,65 @@ RSpec.describe Dashboard::LessonsController, type: :controller do
     end
   end
 
-  describe "GET #edit" do
+  describe 'GET #edit' do
     let!(:course) { create(:course, user: mentor, type: 'RecordedCourse') }
     let(:lesson) { create(:lesson, course: course) }
 
-    before { get :edit, params: { course_id: course , id: lesson} }
+    before { get :edit, params: { course_id: course, id: lesson } }
 
-    it "renders edit view" do
+    it 'renders edit view' do
       expect(response).to render_template :edit
     end
   end
 
-  describe "PATCH #update" do
+  describe 'PATCH #update' do
     let(:course) { create(:recorded_course, user: mentor, type: 'RecordedCourse') }
-    let(:lesson) { create(:lesson, course: course, title: "Lesson9") }
+    let(:lesson) { create(:lesson, course: course, title: 'Lesson9') }
 
-    context "with valid attributes" do
-
-      it "assigns the requested lesson to @lesson" do
+    context 'with valid attributes' do
+      it 'assigns the requested lesson to @lesson' do
         patch :update, params: { course_id: course, id: lesson, lesson: attributes_for(:lesson) }
         expect(assigns(:lesson)).to eq lesson
       end
 
-      it "changes lesson attributes" do
-        expect(lesson.title).to eq "Lesson9"
-        patch :update, params: { course_id: course.id, id: lesson, lesson: { title: "new name" } }
+      it 'changes lesson attributes' do
+        expect(lesson.title).to eq 'Lesson9'
+        patch :update, params: { course_id: course.id, id: lesson, lesson: { title: 'new name' } }
         lesson.reload
 
-        expect(lesson.title).to eq "new name"
+        expect(lesson.title).to eq 'new name'
       end
 
-      it "redirects to updated lesson" do
+      it 'redirects to updated lesson' do
         patch :update, params: { course_id: course, id: lesson, lesson: attributes_for(:lesson) }
         expect(response).to redirect_to dashboard_course_lessons_path
       end
     end
 
-    context "with invalid attributes" do
+    context 'with invalid attributes' do
       before do
         patch :update,
-        params: { course_id: course.id, id: lesson, lesson: { title: nil } }
+              params: { course_id: course.id, id: lesson, lesson: { title: nil } }
       end
 
-      it "does not change lesson" do
-        expect(lesson.title).to eq "Lesson9"
+      it 'does not change lesson' do
+        expect(lesson.title).to eq 'Lesson9'
         course.reload
 
-        expect(lesson.title).to eq "Lesson9"
+        expect(lesson.title).to eq 'Lesson9'
       end
     end
   end
 
-  describe "DELETE #destroy" do
+  describe 'DELETE #destroy' do
     let(:course) { create(:recorded_course, user: mentor, type: 'RecordedCourse') }
     let(:lesson) { create(:lesson, course: course) }
     let(:delete_action) do
       delete :destroy, params: { course_id: course, id: lesson, lesson: attributes_for(:lesson) }
     end
 
-    context "if lesson belongs to the couse" do
-      it "deletes course" do
+    context 'if lesson belongs to the couse' do
+      it 'deletes course' do
         expect { delete_action }.to change(Lesson, :count).by(0)
 
         delete_action

@@ -1,0 +1,17 @@
+{
+  // If not specified searches for 'rubocop' executable available on PATH (default and recommended)
+  // Если не указано, ищет исполняемый файл 'rubocop', доступный по пути (по умолчанию и рекомендуется)
+  "ruby.rubocop.executePath": "/home/vicstor/.rvm/gems/ruby-2.4.5/gems/rubocop-0.79.0/lib/rubocop.rb",
+
+  // You can use specific path
+  // "ruby.rubocop.executePath": "/Users/you/.rbenv/shims/"
+  // "ruby.rubocop.executePath": "/Users/you/.rvm/gems/ruby-2.3.2/bin/"
+  // "ruby.rubocop.executePath": "D:/bin/Ruby22-x64/bin/"
+
+  // If not specified, it assumes a null value by default.
+  // Если он не указан, то по умолчанию принимает значение null.
+  "ruby.rubocop.configFilePath": "/path/to/config/.rubocop.yml",
+
+  // default true
+  "ruby.rubocop.onSave": true
+}
